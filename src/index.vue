@@ -6,19 +6,17 @@
     [`vue-number-input--${size}`]: size,
   }" v-on="listeners">
     <button v-if="controls" class="vue-number-input__button vue-number-input__button--minus" type="button" @click="decrease" :disabled="disabled || readonly || !decreasable"></button>
-    <input class="vue-number-input__input" ref="input" type="number" :value="currentValue" :min="min" :max="max" :step="step" :size="size" @change="change" @paste="paste" :readonly="readonly" :disabled="disabled || (!decreasable && !increasable)" v-bind="$attrs">
+    <input class="vue-number-input__input" ref="input" type="number" :name="name" :value="currentValue" :min="min" :max="max" :step="step" @change="change" @paste="paste" :readonly="readonly" :disabled="disabled || (!decreasable && !increasable)">
     <button v-if="controls" class="vue-number-input__button vue-number-input__button--plus" type="button" @click="increase" :disabled="disabled || readonly || !increasable"></button>
   </div>
 </template>
 
 <script>
   const isNaN = Number.isNaN || window.isNaN;
-  const REGEXP_NUMBER = /^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/;
+  const REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
 
   export default {
-    name: 'vue-number-input',
-
-    inheritAttrs: false,
+    name: 'number-input',
 
     data() {
       return {
@@ -46,6 +44,7 @@
         default: -Infinity,
       },
 
+      name: String,
       readonly: Boolean,
       size: String,
 
@@ -275,15 +274,7 @@
 
       & > input {
         display: inline-block;
-        width: auto;
-
-        &[size] {
-          display: inline-block;
-        }
-
-        &:not([size]) {
-          width: 12.5rem;
-        }
+        width: 12.5rem;
       }
     }
 
@@ -307,21 +298,17 @@
         padding: .25rem .5rem;
       }
 
-      &.vue-number-input--inline {
-        & > input {
-          width: 10rem;
-        }
+      &.vue-number-input--inline > input {
+        width: 10rem;
       }
 
-      &.vue-number-input--controls {
-        & > button {
-          width: 2rem;
-        }
+      &.vue-number-input--controls > button {
+        width: 2rem;
+      }
 
-        & > input {
-          padding-left: 2.5rem;
-          padding-right: 2.5rem;
-        }
+      &.vue-number-input--controls > input {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
       }
     }
 
@@ -332,21 +319,17 @@
         padding: .5rem 1rem;
       }
 
-      &.vue-number-input--inline {
-        & > input {
-          width: 15rem;
-        }
+      &.vue-number-input--inline > input {
+        width: 15rem;
       }
 
-      &.vue-number-input--controls {
-        & > button {
-          width: 3rem;
-        }
+      &.vue-number-input--controls > button {
+        width: 3rem;
+      }
 
-        & > input {
-          padding-left: 4rem;
-          padding-right: 4rem;
-        }
+      &.vue-number-input--controls > input {
+        padding-left: 4rem;
+        padding-right: 4rem;
       }
     }
   }
