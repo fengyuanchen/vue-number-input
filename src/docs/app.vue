@@ -8,9 +8,9 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse" role="navigation">
           <nav class="nav navbar-nav">
-            <a class="nav-link" :href="`//github.com/${pkg.repository}`" title="View the GitHub project">GitHub</a>
-            <a class="nav-link" :href="`//github.com/${pkg.repository}/blob/master/LICENSE`">License</a>
-            <a class="nav-link" :href="pkg.author.url" title="About the author">About</a>
+            <a class="nav-link" :href="`//github.com/${repository}`" title="View the GitHub project">GitHub</a>
+            <a class="nav-link" :href="`//github.com/${repository}/blob/master/LICENSE`">License</a>
+            <a class="nav-link" :href="author.url" title="About the author">About</a>
           </nav>
         </div>
       </nav>
@@ -20,8 +20,8 @@
         <div class="container">
           <div class="row">
             <div class="col-md">
-              <h1>{{ name }} <small class="h6">v{{ pkg.version }}</small></h1>
-              <p class="lead">{{ pkg.description }}</p>
+              <h1>{{ name }} <small class="h6">v{{ version }}</small></h1>
+              <p class="lead">{{ description }}</p>
             </div>
             <div class="col-md">
               <div class="carbonads" ref="carbonads"></div>
@@ -39,9 +39,9 @@
       <div class="container">
         <p class="heart"></p>
         <nav class="nav flex-wrap justify-content-center mb-3">
-          <a class="nav-link" :href="`//github.com/${pkg.repository}`">GitHub</a>
-          <a class="nav-link" :href="`//github.com/${pkg.repository}/blob/master/LICENSE`">License</a>
-          <a class="nav-link" :href="pkg.author.url">About</a>
+          <a class="nav-link" :href="`//github.com/${repository}`">GitHub</a>
+          <a class="nav-link" :href="`//github.com/${repository}/blob/master/LICENSE`">License</a>
+          <a class="nav-link" :href="author.url">About</a>
         </nav>
       </div>
     </footer>
@@ -52,16 +52,16 @@
   import pkg from '../../package.json';
   import Readme from '../README.md';
 
+  // eslint-disable-next-line
+  pkg.name = pkg.name.split('/').reverse()[0]
+
   export default {
     components: {
       Readme,
     },
 
     data() {
-      return {
-        pkg,
-        name: pkg.name.split('/').reverse()[0],
-      };
+      return pkg;
     },
 
     mounted() {
@@ -76,8 +76,14 @@
 </script>
 
 <style>
-  .markdown-body table {
-    display: table;
+  .markdown-body {
+    table {
+      display: table;
+    }
+
+    code {
+      white-space: nowrap;
+    }
   }
 
   .carbonads {
@@ -86,44 +92,41 @@
     font-size: .875rem;
     overflow: hidden;
     padding: 1rem;
-  }
 
-  .carbon-wrap {
-    overflow: hidden;
-  }
-
-  .carbon-img {
-    clear: left;
-    display: block;
-    float: left;
-  }
-
-  .carbon-text,
-  .carbon-poweredby {
-    display: block;
-    margin-left: 140px;
-  }
-
-  .carbon-text,
-  .carbon-text:hover,
-  .carbon-text:focus {
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .carbon-poweredby,
-  .carbon-poweredby:hover,
-  .carbon-poweredby:focus {
-    color: #ddd;
-    text-decoration: none;
-  }
-
-  @media (min-width: 768px) {
-    .carbonads {
+    @media (min-width: 768px) {
       float: right;
       margin-bottom: -1rem;
       margin-top: -1rem;
       max-width: 360px;
+    }
+  }
+
+  .carbon {
+    &-wrap {
+      overflow: hidden;
+    }
+
+    &-img {
+      clear: left;
+      display: block;
+      float: left;
+    }
+
+    &-text,
+    &-poweredby {
+      display: block;
+      margin-left: 140px;
+
+      &,
+      &:focus,
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+
+    &-poweredby {
+      color: #ddd;
     }
   }
 

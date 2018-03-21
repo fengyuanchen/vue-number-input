@@ -8,7 +8,7 @@
 <template>
   <div>
     <p>Value: {{ value }}</p>
-    <vue-number-input v-model="value" :min="1" :max="10" inline controls></vue-number-input>
+    <number-input v-model="value" :min="1" :max="10" inline controls></number-input>
   </div>
 </template>
 
@@ -27,7 +27,7 @@
 
 ```html
 <template>
-  <vue-number-input :step="10" inline controls></vue-number-input>
+  <number-input :step="10" inline controls></number-input>
 </template>
 ```
 
@@ -37,9 +37,9 @@
 <template>
   <div>
     <p>
-      <vue-number-input placeholder="Block input (default)" controls></vue-number-input>
+      <number-input placeholder="Block input (default)" controls></number-input>
     </p>
-    <vue-number-input placeholder="Inline input" inline controls></vue-number-input>
+    <number-input placeholder="Inline input" inline controls></number-input>
   </div>
 </template>
 ```
@@ -48,7 +48,7 @@
 
 ```html
 <template>
-  <vue-number-input :value="0" inline center controls></vue-number-input>
+  <number-input :value="0" inline center controls></number-input>
 </template>
 ```
 
@@ -57,9 +57,9 @@
 ```html
 <template>
   <div>
-    <vue-number-input placeholder="Small" size="small" inline controls></vue-number-input>
-    <vue-number-input placeholder="Default" inline controls></vue-number-input>
-    <vue-number-input placeholder="Large" size="large" inline controls></vue-number-input>
+    <number-input placeholder="Small" size="small" inline controls></number-input>
+    <number-input placeholder="Default" inline controls></number-input>
+    <number-input placeholder="Large" size="large" inline controls></number-input>
   </div>
 </template>
 ```
@@ -69,9 +69,9 @@
 ```html
 <template>
   <div>
-    <vue-number-input placeholder="Small number input" size="small" inline></vue-number-input>
-    <vue-number-input placeholder="Default number input" inline></vue-number-input>
-    <vue-number-input placeholder="Large number input" size="large" inline></vue-number-input>
+    <number-input placeholder="Small number input" size="small" inline></number-input>
+    <number-input placeholder="Default number input" inline></number-input>
+    <number-input placeholder="Large number input" size="large" inline></number-input>
   </div>
 </template>
 ```
@@ -80,7 +80,7 @@
 
 ```html
 <template>
-  <vue-number-input :value="1" inline controls readonly></vue-number-input>
+  <number-input :value="1" inline controls readonly></number-input>
 </template>
 ```
 
@@ -88,13 +88,11 @@
 
 ```html
 <template>
-  <vue-number-input :value="0" inline controls disabled></vue-number-input>
+  <number-input :value="0" inline controls disabled></number-input>
 </template>
 ```
 
 ## Props
-
-All native attributes of the `<input type="number">` element are supported.
 
 | Name | Type | Default | Options | Description |
 | --- | --- | --- | --- | --- |
