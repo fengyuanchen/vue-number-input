@@ -1,7 +1,5 @@
 const puppeteer = require('puppeteer');
-const webpackConfig = require('../webpack.config')({
-  docs: true,
-});
+const webpackConfig = require('../webpack.config');
 
 process.env.CHROME_BIN = puppeteer.executablePath();
 
@@ -25,6 +23,7 @@ module.exports = (config) => {
     reporters: ['mocha'],
     singleRun: true,
     webpack: {
+      mode: 'production',
       module: webpackConfig.module,
       resolve: webpackConfig.resolve,
     },

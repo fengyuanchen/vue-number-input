@@ -3,18 +3,43 @@ import VueNumberInput from '../src/index.vue';
 
 Vue.component(VueNumberInput.name, VueNumberInput);
 
-describe('<vue-number-input>', () => {
-  it('name', () => {
+describe('<number-input>', () => {
+  it('center', () => {
     const vm = new Vue({
-      template: '<vue-number-input name="digit"></vue-number-input>',
+      template: '<number-input center></number-input>',
     }).$mount();
 
-    expect(vm.$el.querySelector('input').name).to.equal('digit');
+    expect(vm.$el.classList.contains('vue-number-input--center')).to.be.true;
   });
 
-  it('value', () => {
+  it('controls', () => {
     const vm = new Vue({
-      template: '<vue-number-input :value="10"></vue-number-input>',
+      template: '<number-input controls></number-input>',
+    }).$mount();
+
+    expect(vm.$el.querySelectorAll('button').length).to.equal(2);
+  });
+
+  it('disabled', () => {
+    const vm = new Vue({
+      template: '<number-input controls disabled></number-input>',
+    }).$mount();
+
+    expect(vm.$el.querySelector('button').disabled).to.be.true;
+    expect(vm.$el.querySelector('input').disabled).to.be.true;
+  });
+
+  it('inline', () => {
+    const vm = new Vue({
+      template: '<number-input inline></number-input>',
+    }).$mount();
+
+    expect(vm.$el.classList.contains('vue-number-input--inline')).to.be.true;
+  });
+
+  it('max', () => {
+    const vm = new Vue({
+      template: '<number-input :value="100" :max="10"></number-input>',
     }).$mount();
 
     expect(vm.$el.querySelector('input').valueAsNumber).to.equal(10);
@@ -22,23 +47,40 @@ describe('<vue-number-input>', () => {
 
   it('min', () => {
     const vm = new Vue({
-      template: '<vue-number-input :value="-1" :min="0"></vue-number-input>',
+      template: '<number-input :value="-1" :min="0"></number-input>',
     }).$mount();
 
     expect(vm.$el.querySelector('input').valueAsNumber).to.equal(0);
   });
 
-  it('max', () => {
+  it('name', () => {
     const vm = new Vue({
-      template: '<vue-number-input :value="100" :max="10"></vue-number-input>',
+      template: '<number-input name="digit"></number-input>',
     }).$mount();
 
-    expect(vm.$el.querySelector('input').valueAsNumber).to.equal(10);
+    expect(vm.$el.querySelector('input').name).to.equal('digit');
+  });
+
+  it('readonly', () => {
+    const vm = new Vue({
+      template: '<number-input controls readonly></number-input>',
+    }).$mount();
+
+    expect(vm.$el.querySelector('button').disabled).to.be.true;
+    expect(vm.$el.querySelector('input').readOnly).to.be.true;
+  });
+
+  it('size', () => {
+    const vm = new Vue({
+      template: '<number-input size="small"></number-input>',
+    }).$mount();
+
+    expect(vm.$el.classList.contains('vue-number-input--small')).to.be.true;
   });
 
   it('step', (done) => {
     const vm = new Vue({
-      template: '<vue-number-input :step="2" controls></vue-number-input>',
+      template: '<number-input :step="2" controls></number-input>',
 
       mounted() {
 
@@ -52,53 +94,11 @@ describe('<vue-number-input>', () => {
     }, 100);
   });
 
-  it('size', () => {
+  it('value', () => {
     const vm = new Vue({
-      template: '<vue-number-input size="small"></vue-number-input>',
+      template: '<number-input :value="10"></number-input>',
     }).$mount();
 
-    expect(vm.$el.classList.contains('vue-number-input--small')).to.be.true;
-  });
-
-  it('inline', () => {
-    const vm = new Vue({
-      template: '<vue-number-input inline></vue-number-input>',
-    }).$mount();
-
-    expect(vm.$el.classList.contains('vue-number-input--inline')).to.be.true;
-  });
-
-  it('center', () => {
-    const vm = new Vue({
-      template: '<vue-number-input center></vue-number-input>',
-    }).$mount();
-
-    expect(vm.$el.classList.contains('vue-number-input--center')).to.be.true;
-  });
-
-  it('controls', () => {
-    const vm = new Vue({
-      template: '<vue-number-input controls></vue-number-input>',
-    }).$mount();
-
-    expect(vm.$el.querySelectorAll('button').length).to.equal(2);
-  });
-
-  it('readonly', () => {
-    const vm = new Vue({
-      template: '<vue-number-input controls readonly></vue-number-input>',
-    }).$mount();
-
-    expect(vm.$el.querySelector('button').disabled).to.be.true;
-    expect(vm.$el.querySelector('input').readOnly).to.be.true;
-  });
-
-  it('disabled', () => {
-    const vm = new Vue({
-      template: '<vue-number-input controls disabled></vue-number-input>',
-    }).$mount();
-
-    expect(vm.$el.querySelector('button').disabled).to.be.true;
-    expect(vm.$el.querySelector('input').disabled).to.be.true;
+    expect(vm.$el.querySelector('input').valueAsNumber).to.equal(10);
   });
 });
