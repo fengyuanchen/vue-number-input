@@ -7,12 +7,29 @@
 - [Docs](src/README.md)
 - [Demo](https://fengyuanchen.github.io/vue-number-input)
 
+## Main
+
+```text
+dist/
+├── vue-number-input.js        (UMD)
+├── vue-number-input.min.js    (UMD, compressed)
+├── vue-number-input.common.js (CommonJS, default)
+└── vue-number-input.esm.js    (ES Module)
+```
+
 ## Getting started
 
 ### Installation
 
 ```shell
-npm install @chenfengyuan/vue-number-input
+npm install @chenfengyuan/vue-number-input vue
+```
+
+In browser:
+
+```html
+<script src="/path/to/vue.js"></script>
+<script src="/path/to/vue-number-input.js"></script>
 ```
 
 ### Usage
@@ -21,7 +38,17 @@ npm install @chenfengyuan/vue-number-input
 import Vue from 'vue';
 import VueNumberInput from '@chenfengyuan/vue-number-input';
 
-Vue.component('number-input', VueNumberInput);
+Vue.component(VueNumberInput.name, VueNumberInput);
+```
+
+```html
+<number-input controls></number-input>
+```
+
+In browser:
+
+```html
+<script>Vue.component(VueNumberInput.name, VueNumberInput);</script>
 ```
 
 ## Browser support
@@ -43,4 +70,4 @@ Maintained under the [Semantic Versioning guidelines](http://semver.org).
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [fengyuanchen](http://fengyuanchen.com)
+[MIT](http://opensource.org/licenses/MIT) © [Chen Fengyuan](http://chenfengyuan.com)

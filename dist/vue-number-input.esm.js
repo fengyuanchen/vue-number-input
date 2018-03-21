@@ -8,8 +8,6 @@
  * Date: 2018-03-21T13:52:27.466Z
  */
 
-'use strict';
-
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -214,4 +212,4 @@ var index = { render: function render() {
   }
 };
 
-module.exports = index;
+export default index;
