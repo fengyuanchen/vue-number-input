@@ -9,7 +9,7 @@ describe('<number-input>', () => {
       template: '<number-input center></number-input>',
     }).$mount();
 
-    expect(vm.$el.classList.contains('vue-number-input--center')).to.be.true;
+    expect(vm.$el.classList.contains('number-input--center')).to.be.true;
   });
 
   it('controls', () => {
@@ -34,7 +34,7 @@ describe('<number-input>', () => {
       template: '<number-input inline></number-input>',
     }).$mount();
 
-    expect(vm.$el.classList.contains('vue-number-input--inline')).to.be.true;
+    expect(vm.$el.classList.contains('number-input--inline')).to.be.true;
   });
 
   it('max', () => {
@@ -75,7 +75,7 @@ describe('<number-input>', () => {
       template: '<number-input size="small"></number-input>',
     }).$mount();
 
-    expect(vm.$el.classList.contains('vue-number-input--small')).to.be.true;
+    expect(vm.$el.classList.contains('number-input--small')).to.be.true;
   });
 
   it('step', (done) => {

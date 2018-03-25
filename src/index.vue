@@ -1,13 +1,13 @@
 <template>
-  <div class="vue-number-input" :class="{
-    'vue-number-input--inline': inline,
-    'vue-number-input--center': center,
-    'vue-number-input--controls': controls,
-    [`vue-number-input--${size}`]: size,
+  <div class="number-input" :class="{
+    'number-input--inline': inline,
+    'number-input--center': center,
+    'number-input--controls': controls,
+    [`number-input--${size}`]: size,
   }" v-on="listeners">
-    <button v-if="controls" class="vue-number-input__button vue-number-input__button--minus" type="button" @click="decrease" :disabled="disabled || readonly || !decreasable"></button>
-    <input class="vue-number-input__input" ref="input" type="number" :name="name" :value="currentValue" :min="min" :max="max" :step="step" @change="change" @paste="paste" :readonly="readonly" :disabled="disabled || (!decreasable && !increasable)">
-    <button v-if="controls" class="vue-number-input__button vue-number-input__button--plus" type="button" @click="increase" :disabled="disabled || readonly || !increasable"></button>
+    <button v-if="controls" class="number-input__button number-input__button--minus" type="button" @click="decrease" :disabled="disabled || readonly || !decreasable"></button>
+    <input class="number-input__input" ref="input" type="number" :name="name" :value="currentValue" :min="min" :max="max" :step="step" @change="change" @paste="paste" :readonly="readonly" :disabled="disabled || (!decreasable && !increasable)">
+    <button v-if="controls" class="number-input__button number-input__button--plus" type="button" @click="increase" :disabled="disabled || readonly || !increasable"></button>
   </div>
 </template>
 
@@ -163,7 +163,7 @@
 </script>
 
 <style scoped>
-  @block vue-number-input {
+  @block number-input {
     display: block;
     max-width: 100%;
     overflow: hidden;
@@ -298,15 +298,15 @@
         padding: .25rem .5rem;
       }
 
-      &.vue-number-input--inline > input {
+      &.number-input--inline > input {
         width: 10rem;
       }
 
-      &.vue-number-input--controls > button {
+      &.number-input--controls > button {
         width: 2rem;
       }
 
-      &.vue-number-input--controls > input {
+      &.number-input--controls > input {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
       }
@@ -319,15 +319,15 @@
         padding: .5rem 1rem;
       }
 
-      &.vue-number-input--inline > input {
+      &.number-input--inline > input {
         width: 15rem;
       }
 
-      &.vue-number-input--controls > button {
+      &.number-input--controls > button {
         width: 3rem;
       }
 
-      &.vue-number-input--controls > input {
+      &.number-input--controls > input {
         padding-left: 4rem;
         padding-right: 4rem;
       }
