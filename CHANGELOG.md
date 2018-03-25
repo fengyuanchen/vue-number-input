@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0 (Mar 25, 2018)
+
+- Rename element class name from `vue-number-input` to `number-input`.
+
 ## 0.2.0 (Mar 21, 2018)
 
 - Fix wrong output file name.

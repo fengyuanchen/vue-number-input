@@ -4,8 +4,7 @@
 
 > Number input component for [Vue.js](https://vuejs.org/).
 
-- [Docs](src/README.md)
-- [Demo](https://fengyuanchen.github.io/vue-number-input)
+- [Docs & demo](https://fengyuanchen.github.io/vue-number-input)
 
 ## Main
 
