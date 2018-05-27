@@ -1,42 +1,40 @@
 const babel = require('rollup-plugin-babel');
+const changeCase = require('change-case');
 const commonjs = require('rollup-plugin-commonjs');
+const createBanner = require('create-banner');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const vue = require('rollup-plugin-vue');
 const pkg = require('./package');
 
-const now = new Date();
-const banner = `/*!
- * vue-number-input v${pkg.version}
- * https://github.com/${pkg.repository}
- *
- * Copyright (c) ${now.getFullYear()} ${pkg.author.name}
- * Released under the ${pkg.license} license
- *
- * Date: ${now.toISOString()}
- */
-`;
+pkg.name = pkg.name.replace(/^.+\//, '');
+
+const banner = createBanner({
+  data: {
+    year: '2018-present',
+  },
+});
 
 module.exports = {
   input: 'src/index.vue',
   output: [
     {
       banner,
-      file: 'dist/vue-number-input.js',
+      name: changeCase.camelCase(pkg.name),
+      file: `dist/${pkg.name}.js`,
       format: 'umd',
-      name: 'VueNumberInput',
       globals: {
         vue: 'Vue',
       },
     },
     {
       banner,
-      file: 'dist/vue-number-input.common.js',
+      file: `dist/${pkg.name}.common.js`,
       format: 'cjs',
     },
     {
       banner,
-      file: 'dist/vue-number-input.esm.js',
-      format: 'es',
+      file: `dist/${pkg.name}.esm.js`,
+      format: 'esm',
     },
   ],
   external: ['vue'],
@@ -48,7 +46,6 @@ module.exports = {
       css: true,
     }),
     babel({
-      exclude: 'node_modules/**',
       plugins: ['external-helpers'],
     }),
   ],
