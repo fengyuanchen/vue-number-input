@@ -1,17 +1,17 @@
 /*!
- * vue-number-input v0.4.0
+ * vue-number-input v0.4.1
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-05-27T06:26:18.539Z
+ * Date: 2018-05-27T08:10:52.291Z
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global.vueNumberInput = factory());
+  (global.VueNumberInput = factory());
 }(this, (function () { 'use strict';
 
   var defineProperty = function (obj, key, value) {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1 (May 27, 2018)
+
+- Fix wrong global name in window.
+
 ## 0.4.0 (May 27, 2018)
 
 - Add a new prop: `inputtable`.

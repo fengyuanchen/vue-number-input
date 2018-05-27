@@ -1,11 +1,11 @@
 /*!
- * vue-number-input v0.4.0
+ * vue-number-input v0.4.1
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-05-27T06:26:18.539Z
+ * Date: 2018-05-27T08:10:52.291Z
  */
 
 'use strict';

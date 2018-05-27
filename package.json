@@ -1,6 +1,6 @@
 {
   "name": "@chenfengyuan/vue-number-input",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Number input component for Vue.js.",
   "main": "dist/vue-number-input.common.js",
   "module": "dist/vue-number-input.esm.js",
