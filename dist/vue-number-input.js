@@ -1,17 +1,17 @@
 /*!
- * vue-number-input v0.3.0
- * https://github.com/fengyuanchen/vue-number-input
+ * vue-number-input v0.4.0
+ * https://fengyuanchen.github.io/vue-number-input
  *
- * Copyright (c) 2018 Chen Fengyuan
+ * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-03-25T08:18:12.750Z
+ * Date: 2018-05-27T06:26:18.539Z
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global.VueNumberInput = factory());
+  (global.vueNumberInput = factory());
 }(this, (function () { 'use strict';
 
   var defineProperty = function (obj, key, value) {
@@ -59,7 +59,7 @@
   var REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
 
   var index = { render: function render() {
-      var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', _vm._g({ staticClass: "number-input", class: defineProperty({ 'number-input--inline': _vm.inline, 'number-input--center': _vm.center, 'number-input--controls': _vm.controls }, 'number-input--' + _vm.size, _vm.size) }, _vm.listeners), [_vm.controls ? _c('button', { staticClass: "number-input__button number-input__button--minus", attrs: { "type": "button", "disabled": _vm.disabled || _vm.readonly || !_vm.decreasable }, on: { "click": _vm.decrease } }) : _vm._e(), _vm._v(" "), _c('input', { ref: "input", staticClass: "number-input__input", attrs: { "type": "number", "name": _vm.name, "min": _vm.min, "max": _vm.max, "step": _vm.step, "readonly": _vm.readonly, "disabled": _vm.disabled || !_vm.decreasable && !_vm.increasable }, domProps: { "value": _vm.currentValue }, on: { "change": _vm.change, "paste": _vm.paste } }), _vm._v(" "), _vm.controls ? _c('button', { staticClass: "number-input__button number-input__button--plus", attrs: { "type": "button", "disabled": _vm.disabled || _vm.readonly || !_vm.increasable }, on: { "click": _vm.increase } }) : _vm._e()]);
+      var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', _vm._g({ staticClass: "number-input", class: defineProperty({ 'number-input--inline': _vm.inline, 'number-input--center': _vm.center, 'number-input--controls': _vm.controls }, 'number-input--' + _vm.size, _vm.size) }, _vm.listeners), [_vm.controls ? _c('button', { staticClass: "number-input__button number-input__button--minus", attrs: { "type": "button", "disabled": _vm.disabled || _vm.readonly || !_vm.decreasable }, on: { "click": _vm.decrease } }) : _vm._e(), _vm._v(" "), _c('input', { ref: "input", staticClass: "number-input__input", attrs: { "type": "number", "name": _vm.name, "min": _vm.min, "max": _vm.max, "step": _vm.step, "readonly": _vm.readonly || !_vm.inputtable, "disabled": _vm.disabled || !_vm.decreasable && !_vm.increasable }, domProps: { "value": _vm.currentValue }, on: { "change": _vm.change, "paste": _vm.paste } }), _vm._v(" "), _vm.controls ? _c('button', { staticClass: "number-input__button number-input__button--plus", attrs: { "type": "button", "disabled": _vm.disabled || _vm.readonly || !_vm.increasable }, on: { "click": _vm.increase } }) : _vm._e()]);
     }, staticRenderFns: [], _scopeId: 'data-v-1a4d8e3c',
     name: 'number-input',
 
@@ -78,6 +78,12 @@
       center: Boolean,
       controls: Boolean,
       disabled: Boolean,
+
+      inputtable: {
+        type: Boolean,
+        default: true
+      },
+
       inline: Boolean,
 
       max: {

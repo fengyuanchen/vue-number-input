@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0 (May 27, 2018)
+
+- Add a new prop: `inputtable`.
+
 ## 0.3.0 (Mar 25, 2018)
 
 - Rename element class name from `vue-number-input` to `number-input`.
