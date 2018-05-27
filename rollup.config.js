@@ -19,7 +19,7 @@ module.exports = {
   output: [
     {
       banner,
-      name: changeCase.camelCase(pkg.name),
+      name: changeCase.pascalCase(pkg.name),
       file: `dist/${pkg.name}.js`,
       format: 'umd',
       globals: {
