@@ -37,6 +37,14 @@ describe('<number-input>', () => {
     expect(vm.$el.classList.contains('number-input--inline')).to.be.true;
   });
 
+  it('inputtable', () => {
+    const vm = new Vue({
+      template: '<number-input :inputtable="false"></number-input>',
+    }).$mount();
+
+    expect(vm.$el.querySelector('input').readOnly).to.be.true;
+  });
+
   it('max', () => {
     const vm = new Vue({
       template: '<number-input :value="100" :max="10"></number-input>',

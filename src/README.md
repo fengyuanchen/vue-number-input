@@ -76,6 +76,16 @@
 </template>
 ```
 
+## Not inputtable
+
+The input is not inputtable, but still allow to change the value by controls.
+
+```html
+<template>
+  <number-input :value="1" :min="1" :max="3" :inputtable="false" inline controls></number-input>
+</template>
+```
+
 ## Readonly
 
 ```html
@@ -100,6 +110,7 @@
 | controls | `Boolean` | `false` | - | Indicate if the controls is visible or not. |
 | disabled | `Boolean` | `false` | - | Indicate if the component is disabled or not. |
 | inline | `Boolean` | `false` | - | Indicate if the input is inline or not. |
+| inputtable | `Boolean` | `true` | - | Indicate if the input element is inputtable or not. |
 | max | `Number` | `Infinity` | - | The maximum value. |
 | min | `Number` | `-Infinity` | - | The minimum value. |
 | name | `String` | - | - | The name for the built-in input element. |
