@@ -32,6 +32,7 @@
       center: Boolean,
       controls: Boolean,
       disabled: Boolean,
+      round: Boolean,
 
       inputtable: {
         type: Boolean,
@@ -158,10 +159,10 @@
       setValue(newValue) {
         const oldValue = this.currentValue;
 
-        this.currentValue = newValue;
-        this.$emit('change', newValue, oldValue);
+        this.currentValue = this.round ? Math.round(newValue) : newValue;
+        this.$emit('change', this.currentValue, oldValue);
         this.$nextTick(() => {
-          this.$refs.input.value = newValue;
+          this.$refs.input.value = this.currentValue;
         });
       },
     },
