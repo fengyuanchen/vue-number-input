@@ -111,6 +111,7 @@ The input is not inputtable, but still allow to change the value by controls.
 | disabled | `Boolean` | `false` | - | Indicate if the component is disabled or not. |
 | inline | `Boolean` | `false` | - | Indicate if the input is inline or not. |
 | inputtable | `Boolean` | `true` | - | Indicate if the input element is inputtable or not. |
+| round | `Boolean` | `false` | - | Indicate if the number is rounded or not. |
 | max | `Number` | `Infinity` | - | The maximum value. |
 | min | `Number` | `-Infinity` | - | The minimum value. |
 | name | `String` | - | - | The name for the built-in input element. |
