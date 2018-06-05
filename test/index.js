@@ -109,4 +109,20 @@ describe('<number-input>', () => {
 
     expect(vm.$el.querySelector('input').valueAsNumber).to.equal(10);
   });
+  
+  it('round', (done) => {
+    const vm = new Vue({
+      template: '<number-input :step="2" controls></number-input>',
+
+      mounted() {
+
+      },
+    }).$mount();
+
+    vm.$el.querySelector('.number-input__input').val(2.123).trigger('input');
+    setTimeout(() => {
+      expect(vm.$el.querySelector('.number-input__input').valueAsNumber).to.equal(2);
+      done();
+    }, 100);
+  });
 });
