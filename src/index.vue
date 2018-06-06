@@ -6,7 +6,7 @@
     [`number-input--${size}`]: size,
   }" v-on="listeners">
     <button v-if="controls" class="number-input__button number-input__button--minus" type="button" @click="decrease" :disabled="disabled || readonly || !decreasable"></button>
-    <input class="number-input__input" ref="input" type="number" :name="name" :value="currentValue" :min="min" :max="max" :step="step" @change="change" @paste="paste" :readonly="readonly || !inputtable" :disabled="disabled || (!decreasable && !increasable)">
+    <input class="number-input__input" ref="input" type="number" :name="name" :value="currentValue" :min="min" :max="max" :step="step" @change="change" @paste="paste" :readonly="readonly || !inputtable" :disabled="disabled || (!decreasable && !increasable)" autocomplete="off">
     <button v-if="controls" class="number-input__button number-input__button--plus" type="button" @click="increase" :disabled="disabled || readonly || !increasable"></button>
   </div>
 </template>
