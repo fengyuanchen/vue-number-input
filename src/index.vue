@@ -52,6 +52,7 @@
 
       name: String,
       readonly: Boolean,
+      rounded: Boolean,
       size: String,
 
       step: {
@@ -98,7 +99,9 @@
 
     created() {
       if (this.min <= this.max) {
-        this.currentValue = Math.min(this.max, Math.max(this.min, this.value));
+        this.setValue(Math.min(this.max, Math.max(this.min, this.value)));
+      } else if (this.rounded) {
+        this.setValue(this.value);
       }
     },
 
@@ -158,10 +161,10 @@
       setValue(newValue) {
         const oldValue = this.currentValue;
 
-        this.currentValue = newValue;
-        this.$emit('change', newValue, oldValue);
+        this.currentValue = this.rounded ? Math.round(newValue) : newValue;
+        this.$emit('change', this.currentValue, oldValue);
         this.$nextTick(() => {
-          this.$refs.input.value = newValue;
+          this.$refs.input.value = this.currentValue;
         });
       },
     },

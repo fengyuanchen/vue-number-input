@@ -86,6 +86,14 @@ The input is not inputtable, but still allow to change the value by controls.
 </template>
 ```
 
+## Rounded
+
+```html
+<template>
+  <number-input :value="1.5" inline controls rounded></number-input>
+</template>
+```
+
 ## Readonly
 
 ```html
@@ -115,6 +123,7 @@ The input is not inputtable, but still allow to change the value by controls.
 | min | `Number` | `-Infinity` | - | The minimum value. |
 | name | `String` | - | - | The name for the built-in input element. |
 | readonly | `Boolean` | `false` | - | Indicate if the component is read only or not. |
+| rounded | `Boolean` | `false` | - | Indicate if the number is rounded or not. |
 | size | `String` | - | small, large | The size of the component. |
 | step | `Number` | `1` | - | The increment of each step. |
 | value | `Number` | - | - | The binding value. |
