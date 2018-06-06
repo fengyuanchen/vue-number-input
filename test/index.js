@@ -78,6 +78,25 @@ describe('<number-input>', () => {
     expect(vm.$el.querySelector('input').readOnly).to.be.true;
   });
 
+  it('rounded', (done) => {
+    const vm = new Vue({
+      data() {
+        return {
+          value: 1.5,
+        };
+      },
+
+      template: '<number-input v-model="value" rounded></number-input>',
+
+      mounted() {
+        expect(this.value).to.equal(2);
+        done();
+      },
+    }).$mount();
+
+    expect(vm.$el.querySelector('input').valueAsNumber).to.equal(2);
+  });
+
   it('size', () => {
     const vm = new Vue({
       template: '<number-input size="small"></number-input>',
@@ -89,10 +108,6 @@ describe('<number-input>', () => {
   it('step', (done) => {
     const vm = new Vue({
       template: '<number-input :step="2" controls></number-input>',
-
-      mounted() {
-
-      },
     }).$mount();
 
     vm.$el.querySelector('button:last-child').click();
@@ -108,21 +123,5 @@ describe('<number-input>', () => {
     }).$mount();
 
     expect(vm.$el.querySelector('input').valueAsNumber).to.equal(10);
-  });
-  
-  it('round', (done) => {
-    const vm = new Vue({
-      template: '<number-input :step="2" controls></number-input>',
-
-      mounted() {
-
-      },
-    }).$mount();
-
-    vm.$el.querySelector('.number-input__input').val(2.123).trigger('input');
-    setTimeout(() => {
-      expect(vm.$el.querySelector('.number-input__input').valueAsNumber).to.equal(2);
-      done();
-    }, 100);
   });
 });
