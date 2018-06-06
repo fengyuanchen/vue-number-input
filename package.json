@@ -1,13 +1,13 @@
 {
   "name": "@chenfengyuan/vue-number-input",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Number input component for Vue.js.",
   "main": "dist/vue-number-input.common.js",
   "module": "dist/vue-number-input.esm.js",
   "unpkg": "dist/vue-number-input.js",
-  "license": "MIT",
   "repository": "fengyuanchen/vue-number-input",
   "homepage": "https://fengyuanchen.github.io/vue-number-input",
+  "license": "MIT",
   "author": {
     "name": "Chen Fengyuan",
     "url": "http://chenfengyuan.com"
@@ -36,15 +36,15 @@
     "compress": "uglifyjs dist/vue-number-input.js -o dist/vue-number-input.min.js -c -m --comments /^!/",
     "deploy": "npm run clear:docs && npm run build:docs",
     "dev": "webpack-dev-server --mode development --hot --open",
-    "lint": "eslint src test --ext .js,.vue --fix",
+    "lint": "eslint src test *.js --ext .js,.vue --fix",
     "prebuild": "npm run clear",
     "release": "npm run lint && npm run build && npm run compress && npm run deploy && npm test",
     "start": "npm run dev",
     "test": "karma start test/karma.conf.js"
   },
   "devDependencies": {
-    "@commitlint/cli": "^6.2.0",
-    "@commitlint/config-angular": "^6.1.3",
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-angular": "^7.0.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -67,7 +67,7 @@
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.5",
     "karma-webpack": "^3.0.0",
-    "markdown-to-vue-loader": "^0.4.0",
+    "markdown-to-vue-loader": "^0.5.0",
     "mocha": "^5.2.0",
     "postcss": "^6.0.22",
     "postcss-atrule-bem": "^3.1.1",
@@ -78,7 +78,7 @@
     "postcss-merge-rules": "^2.1.2",
     "postcss-nested": "^3.0.0",
     "puppeteer": "^1.4.0",
-    "rollup": "^0.59.3",
+    "rollup": "^0.60.0",
     "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-commonjs": "^9.1.3",
     "rollup-plugin-node-resolve": "^3.3.0",
@@ -87,8 +87,8 @@
     "vue": "^2.5.16",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.16",
-    "webpack": "^4.9.1",
-    "webpack-cli": "^2.1.4",
+    "webpack": "^4.11.1",
+    "webpack-cli": "^3.0.2",
     "webpack-dev-server": "^3.1.4"
   },
   "peerDependencies": {

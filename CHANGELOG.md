@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0 (Jun 6, 2018)
+
+- Add 2 new props: `placeholder` and `rounded`.
+
 ## 0.4.1 (May 27, 2018)
 
 - Fix wrong global name in window.
