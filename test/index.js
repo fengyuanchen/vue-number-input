@@ -69,6 +69,14 @@ describe('<number-input>', () => {
     expect(vm.$el.querySelector('input').name).to.equal('digit');
   });
 
+  it('placeholder', () => {
+    const vm = new Vue({
+      template: '<number-input placeholder="Number input"></number-input>',
+    }).$mount();
+
+    expect(vm.$el.querySelector('input').placeholder).to.equal('Number input');
+  });
+
   it('readonly', () => {
     const vm = new Vue({
       template: '<number-input controls readonly></number-input>',
