@@ -98,14 +98,6 @@
       },
     },
 
-    created() {
-      if (this.min <= this.max) {
-        this.setValue(Math.min(this.max, Math.max(this.min, this.value)));
-      } else if (this.rounded) {
-        this.setValue(this.value);
-      }
-    },
-
     methods: {
       /**
        * Change event handler.
@@ -157,17 +149,35 @@
 
       /**
        * Set new value and dispatch change event.
-       * @param {number} newValue - The new value to set.
+       * @param {number} value - The new value to set.
        */
-      setValue(newValue) {
+      setValue(value) {
         const oldValue = this.currentValue;
+        let newValue = this.rounded ? Math.round(value) : value;
 
-        this.currentValue = this.rounded ? Math.round(newValue) : newValue;
-        this.$emit('change', this.currentValue, oldValue);
+        if (this.min <= this.max) {
+          newValue = Math.min(this.max, Math.max(this.min, newValue));
+        }
+
+        this.currentValue = newValue;
+        this.$emit('change', newValue, oldValue);
         this.$nextTick(() => {
-          this.$refs.input.value = this.currentValue;
+          // Change the input value when it is mounted
+          if (this.$el) {
+            this.$refs.input.value = newValue;
+          }
         });
       },
+    },
+
+    watch: {
+      value(newValue) {
+        this.setValue(newValue);
+      },
+    },
+
+    created() {
+      this.setValue(this.value);
     },
   };
 </script>
