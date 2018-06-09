@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1 (Jun 9, 2018)
+
+- Change the input value only when it is mounted (#4).
+
 ## 0.5.0 (Jun 6, 2018)
 
 - Add 2 new props: `placeholder` and `rounded`.

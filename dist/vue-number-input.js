@@ -1,11 +1,11 @@
 /*!
- * vue-number-input v0.5.0
+ * vue-number-input v0.5.1
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-06-06T14:28:11.032Z
+ * Date: 2018-06-09T04:46:30.374Z
  */
 
 (function (global, factory) {
@@ -146,15 +146,6 @@
       }
     },
 
-    created: function created() {
-      if (this.min <= this.max) {
-        this.setValue(Math.min(this.max, Math.max(this.min, this.value)));
-      } else if (this.rounded) {
-        this.setValue(this.value);
-      }
-    },
-
-
     methods: {
       /**
        * Change event handler.
@@ -212,19 +203,37 @@
 
       /**
        * Set new value and dispatch change event.
-       * @param {number} newValue - The new value to set.
+       * @param {number} value - The new value to set.
        */
-      setValue: function setValue(newValue) {
+      setValue: function setValue(value) {
         var _this = this;
 
         var oldValue = this.currentValue;
+        var newValue = this.rounded ? Math.round(value) : value;
 
-        this.currentValue = this.rounded ? Math.round(newValue) : newValue;
-        this.$emit('change', this.currentValue, oldValue);
+        if (this.min <= this.max) {
+          newValue = Math.min(this.max, Math.max(this.min, newValue));
+        }
+
+        this.currentValue = newValue;
+        this.$emit('change', newValue, oldValue);
         this.$nextTick(function () {
-          _this.$refs.input.value = _this.currentValue;
+          // Change the input value when it is mounted
+          if (_this.$el) {
+            _this.$refs.input.value = newValue;
+          }
         });
       }
+    },
+
+    watch: {
+      value: function value(newValue) {
+        this.setValue(newValue);
+      }
+    },
+
+    created: function created() {
+      this.setValue(this.value);
     }
   };
 
