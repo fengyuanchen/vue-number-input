@@ -41,7 +41,11 @@ export default {
   plugins: [
     nodeResolve(),
     commonjs(),
-    vue(),
+    vue({
+      template: {
+        isProduction: true,
+      },
+    }),
     babel({
       plugins: ['external-helpers'],
     }),
