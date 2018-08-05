@@ -1,29 +1,14 @@
 /*!
- * vue-number-input v0.5.1
+ * vue-number-input v0.5.2
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-06-09T04:46:30.374Z
+ * Date: 2018-08-05T04:49:16.090Z
  */
 
 'use strict';
-
-var defineProperty = function (obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
 
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -39,24 +24,27 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-(function () {
-  if (typeof document !== 'undefined') {
-    var head = document.head || document.getElementsByTagName('head')[0],
-        style = document.createElement('style'),
-        css = ".number-input[data-v-1a4d8e3c] { display: block; max-width: 100%; overflow: hidden; position: relative; } .number-input__button[data-v-1a4d8e3c] { background-color: transparent; border: 0; border-radius: .25rem; bottom: 1px; bottom: .0625rem; position: absolute; top: 1px; top: .0625rem; width: 40px; width: 2.5rem; .number-input__button .number-input__button[data-v-1a4d8e3c]:focus { outline: none; } } .number-input__button .number-input__button[data-v-1a4d8e3c]:focus, .number-input__button[data-v-1a4d8e3c]:focus { outline: none; } .number-input__button[data-v-1a4d8e3c] { .number-input__button .number-input__button[data-v-1a4d8e3c]:hover::before, .number-input__button .number-input__button[data-v-1a4d8e3c]:hover::after { background-color: #0074d9; } } .number-input__button .number-input__button[data-v-1a4d8e3c]:hover::before, .number-input__button .number-input__button[data-v-1a4d8e3c]:hover::after { background-color: #0074d9; } .number-input__button[data-v-1a4d8e3c]:hover { .number-input__button:hover .number-input__button[data-v-1a4d8e3c]:hover::before, .number-input__button:hover .number-input__button[data-v-1a4d8e3c]:hover::after { background-color: #0074d9; } } .number-input__button:hover .number-input__button[data-v-1a4d8e3c]:hover::before, .number-input__button:hover .number-input__button[data-v-1a4d8e3c]:hover::after, .number-input__button[data-v-1a4d8e3c]:hover::before, .number-input__button[data-v-1a4d8e3c]:hover::after { background-color: #0074d9; } .number-input__button[data-v-1a4d8e3c] { .number-input__button .number-input__button[data-v-1a4d8e3c]:disabled::before, .number-input__button .number-input__button[data-v-1a4d8e3c]:disabled::after { background-color: #ddd; } } .number-input__button .number-input__button[data-v-1a4d8e3c]:disabled::before, .number-input__button .number-input__button[data-v-1a4d8e3c]:disabled::after { background-color: #ddd; } .number-input__button[data-v-1a4d8e3c]:disabled { .number-input__button:disabled .number-input__button[data-v-1a4d8e3c]:disabled::before, .number-input__button:disabled .number-input__button[data-v-1a4d8e3c]:disabled::after { background-color: #ddd; } } .number-input__button:disabled .number-input__button[data-v-1a4d8e3c]:disabled::before, .number-input__button:disabled .number-input__button[data-v-1a4d8e3c]:disabled::after, .number-input__button[data-v-1a4d8e3c]:disabled::before, .number-input__button[data-v-1a4d8e3c]:disabled::after { background-color: #ddd; } .number-input__button[data-v-1a4d8e3c] { .number-input__button .number-input__button[data-v-1a4d8e3c]::before, .number-input__button .number-input__button[data-v-1a4d8e3c]::after { background-color: #111; content: \"\"; left: 50%; position: absolute; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); -webkit-transition: background-color .15s; transition: background-color .15s; } } .number-input__button .number-input__button[data-v-1a4d8e3c]::before, .number-input__button .number-input__button[data-v-1a4d8e3c]::after, .number-input__button[data-v-1a4d8e3c]::before, .number-input__button[data-v-1a4d8e3c]::after { background-color: #111; content: \"\"; left: 50%; position: absolute; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); -webkit-transition: background-color .15s; transition: background-color .15s; } .number-input__button[data-v-1a4d8e3c] { .number-input__button .number-input__button[data-v-1a4d8e3c]::before { height: 1px; height: .0625rem; width: 50%; } } .number-input__button .number-input__button[data-v-1a4d8e3c]::before, .number-input__button[data-v-1a4d8e3c]::before { height: 1px; height: .0625rem; width: 50%; } .number-input__button[data-v-1a4d8e3c] { .number-input__button .number-input__button[data-v-1a4d8e3c]::after { height: 50%; width: 1px; width: .0625rem; } } .number-input__button .number-input__button[data-v-1a4d8e3c]::after, .number-input__button[data-v-1a4d8e3c]::after { height: 50%; width: 1px; width: .0625rem; } .number-input__button--minus[data-v-1a4d8e3c] { border-right: 1px solid #ddd; border-right: .0625rem solid #ddd; border-bottom-right-radius: 0; border-top-right-radius: 0; left: 1px; left: .0625rem; .number-input__button--minus .number-input__button--minus[data-v-1a4d8e3c]::after { visibility: hidden; } } .number-input__button--minus .number-input__button--minus[data-v-1a4d8e3c]::after, .number-input__button--minus[data-v-1a4d8e3c]::after { visibility: hidden; } .number-input__button--plus[data-v-1a4d8e3c] { border-left: 1px solid #ddd; border-left: .0625rem solid #ddd; border-bottom-left-radius: 0; border-top-left-radius: 0; right: 1px; right: .0625rem; } .number-input__input[data-v-1a4d8e3c] { border-radius: .25rem; border: 1px solid #ddd; display: block; font-size: 16px; font-size: 1rem; line-height: 1.5; max-width: 100%; min-height: 24px; min-height: 1.5rem; min-width: 48px; min-width: 3rem; padding: 7px 14px; padding: .4375rem .875rem; -webkit-transition: border-color .15s; transition: border-color .15s; width: 100%; .number-input__input .number-input__input[data-v-1a4d8e3c]::-webkit-outer-spin-button, .number-input__input .number-input__input[data-v-1a4d8e3c]::-webkit-inner-spin-button { -webkit-appearance: none; appearance: none; } } .number-input__input .number-input__input[data-v-1a4d8e3c]::-webkit-outer-spin-button, .number-input__input .number-input__input[data-v-1a4d8e3c]::-webkit-inner-spin-button, .number-input__input[data-v-1a4d8e3c]::-webkit-outer-spin-button, .number-input__input[data-v-1a4d8e3c]::-webkit-inner-spin-button { -webkit-appearance: none; appearance: none; } .number-input__input[data-v-1a4d8e3c] { .number-input__input .number-input__input[data-v-1a4d8e3c]:focus { border-color: #0074d9; outline: none; } } .number-input__input .number-input__input[data-v-1a4d8e3c]:focus, .number-input__input[data-v-1a4d8e3c]:focus { border-color: #0074d9; outline: none; } .number-input__input[data-v-1a4d8e3c] { .number-input__input .number-input__input[readonly][data-v-1a4d8e3c] { background-color: #f8f8f8; } } .number-input__input .number-input__input[readonly][data-v-1a4d8e3c], .number-input__input[readonly][data-v-1a4d8e3c] { background-color: #f8f8f8; } .number-input__input[data-v-1a4d8e3c] { .number-input__input .number-input__input[data-v-1a4d8e3c]:disabled { background-color: #f8f8f8; opacity: .65; } } .number-input__input .number-input__input[data-v-1a4d8e3c]:disabled, .number-input__input[data-v-1a4d8e3c]:disabled { background-color: #f8f8f8; opacity: .65; } .number-input--inline[data-v-1a4d8e3c] { display: inline-block; .number-input--inline .number-input--inline > input[data-v-1a4d8e3c] { display: inline-block; width: 200px; width: 12.5rem; } } .number-input--inline .number-input--inline > input[data-v-1a4d8e3c], .number-input--inline > input[data-v-1a4d8e3c] { display: inline-block; width: 200px; width: 12.5rem; } .number-input--center[data-v-1a4d8e3c] { .number-input--center .number-input--center > input[data-v-1a4d8e3c] { text-align: center; } } .number-input--center .number-input--center > input[data-v-1a4d8e3c], .number-input--center > input[data-v-1a4d8e3c] { text-align: center; } .number-input--controls[data-v-1a4d8e3c] { .number-input--controls .number-input--controls > input[data-v-1a4d8e3c] { padding-left: 54px; padding-left: 3.375rem; padding-right: 54px; padding-right: 3.375rem; } } .number-input--controls .number-input--controls > input[data-v-1a4d8e3c], .number-input--controls > input[data-v-1a4d8e3c] { padding-left: 54px; padding-left: 3.375rem; padding-right: 54px; padding-right: 3.375rem; } .number-input--small[data-v-1a4d8e3c] { .number-input--small .number-input--small > input[data-v-1a4d8e3c] { border-radius: .1875rem; font-size: 14px; font-size: .875rem; padding: 4px 8px; padding: .25rem .5rem; } } .number-input--small .number-input--small > input[data-v-1a4d8e3c], .number-input--small > input[data-v-1a4d8e3c] { border-radius: .1875rem; font-size: 14px; font-size: .875rem; padding: 4px 8px; padding: .25rem .5rem; } .number-input--small[data-v-1a4d8e3c] { .number-input--small .number-input--small.number-input--inline > input[data-v-1a4d8e3c] { width: 160px; width: 10rem; } } .number-input--small .number-input--small.number-input--inline > input[data-v-1a4d8e3c], .number-input--small.number-input--inline > input[data-v-1a4d8e3c] { width: 160px; width: 10rem; } .number-input--small[data-v-1a4d8e3c] { .number-input--small .number-input--small.number-input--controls > button[data-v-1a4d8e3c] { width: 32px; width: 2rem; } } .number-input--small .number-input--small.number-input--controls > button[data-v-1a4d8e3c], .number-input--small.number-input--controls > button[data-v-1a4d8e3c] { width: 32px; width: 2rem; } .number-input--small[data-v-1a4d8e3c] { .number-input--small .number-input--small.number-input--controls > input[data-v-1a4d8e3c] { padding-left: 40px; padding-left: 2.5rem; padding-right: 40px; padding-right: 2.5rem; } } .number-input--small .number-input--small.number-input--controls > input[data-v-1a4d8e3c], .number-input--small.number-input--controls > input[data-v-1a4d8e3c] { padding-left: 40px; padding-left: 2.5rem; padding-right: 40px; padding-right: 2.5rem; } .number-input--large[data-v-1a4d8e3c] { .number-input--large .number-input--large > input[data-v-1a4d8e3c] { border-radius: .3125rem; font-size: 20px; font-size: 1.25rem; padding: 8px 16px; padding: .5rem 1rem; } } .number-input--large .number-input--large > input[data-v-1a4d8e3c], .number-input--large > input[data-v-1a4d8e3c] { border-radius: .3125rem; font-size: 20px; font-size: 1.25rem; padding: 8px 16px; padding: .5rem 1rem; } .number-input--large[data-v-1a4d8e3c] { .number-input--large .number-input--large.number-input--inline > input[data-v-1a4d8e3c] { width: 240px; width: 15rem; } } .number-input--large .number-input--large.number-input--inline > input[data-v-1a4d8e3c], .number-input--large.number-input--inline > input[data-v-1a4d8e3c] { width: 240px; width: 15rem; } .number-input--large[data-v-1a4d8e3c] { .number-input--large .number-input--large.number-input--controls > button[data-v-1a4d8e3c] { width: 48px; width: 3rem; } } .number-input--large .number-input--large.number-input--controls > button[data-v-1a4d8e3c], .number-input--large.number-input--controls > button[data-v-1a4d8e3c] { width: 48px; width: 3rem; } .number-input--large[data-v-1a4d8e3c] { .number-input--large .number-input--large.number-input--controls > input[data-v-1a4d8e3c] { padding-left: 64px; padding-left: 4rem; padding-right: 64px; padding-right: 4rem; } } .number-input--large .number-input--large.number-input--controls > input[data-v-1a4d8e3c], .number-input--large.number-input--controls > input[data-v-1a4d8e3c] { padding-left: 64px; padding-left: 4rem; padding-right: 64px; padding-right: 4rem; } ";style.type = 'text/css';if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(document.createTextNode(css));
-    }head.appendChild(style);
-  }
-})();
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var isNaN = Number.isNaN || window.isNaN;
 var REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
+var normalizeDecimalNumber = function normalizeDecimalNumber(value) {
+  return parseFloat(value.toFixed(10));
+};
 
-var index = { render: function render() {
-    var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', _vm._g({ staticClass: "number-input", class: defineProperty({ 'number-input--inline': _vm.inline, 'number-input--center': _vm.center, 'number-input--controls': _vm.controls }, 'number-input--' + _vm.size, _vm.size) }, _vm.listeners), [_vm.controls ? _c('button', { staticClass: "number-input__button number-input__button--minus", attrs: { "type": "button", "disabled": _vm.disabled || _vm.readonly || !_vm.decreasable }, on: { "click": _vm.decrease } }) : _vm._e(), _vm._v(" "), _c('input', { ref: "input", staticClass: "number-input__input", attrs: { "type": "number", "name": _vm.name, "min": _vm.min, "max": _vm.max, "step": _vm.step, "readonly": _vm.readonly || !_vm.inputtable, "disabled": _vm.disabled || !_vm.decreasable && !_vm.increasable, "placeholder": _vm.placeholder, "autocomplete": "off" }, domProps: { "value": _vm.currentValue }, on: { "change": _vm.change, "paste": _vm.paste } }), _vm._v(" "), _vm.controls ? _c('button', { staticClass: "number-input__button number-input__button--plus", attrs: { "type": "button", "disabled": _vm.disabled || _vm.readonly || !_vm.increasable }, on: { "click": _vm.increase } }) : _vm._e()]);
-  }, staticRenderFns: [], _scopeId: 'data-v-1a4d8e3c',
+var script = {
   name: 'number-input',
 
   data: function data() {
@@ -175,7 +163,7 @@ var index = { render: function render() {
           currentValue = 0;
         }
 
-        this.setValue(Math.min(this.max, Math.max(this.min, currentValue - this.step)));
+        this.setValue(Math.min(this.max, Math.max(this.min, normalizeDecimalNumber(currentValue - this.step))));
       }
     },
 
@@ -192,7 +180,7 @@ var index = { render: function render() {
           currentValue = 0;
         }
 
-        this.setValue(Math.min(this.max, Math.max(this.min, currentValue + this.step)));
+        this.setValue(Math.min(this.max, Math.max(this.min, normalizeDecimalNumber(currentValue + this.step))));
       }
     },
 
@@ -232,5 +220,137 @@ var index = { render: function render() {
     this.setValue(this.value);
   }
 };
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function __vue_render__() {
+  var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', _vm._g({ staticClass: "number-input", class: (_obj = {
+      'number-input--inline': _vm.inline,
+      'number-input--center': _vm.center,
+      'number-input--controls': _vm.controls
+    }, _obj["number-input--" + _vm.size] = _vm.size, _obj) }, _vm.listeners), [_vm.controls ? _c('button', { staticClass: "number-input__button number-input__button--minus", attrs: { "type": "button", "disabled": _vm.disabled || _vm.readonly || !_vm.decreasable }, on: { "click": _vm.decrease } }) : _vm._e(), _vm._v(" "), _c('input', { ref: "input", staticClass: "number-input__input", attrs: { "type": "number", "name": _vm.name, "min": _vm.min, "max": _vm.max, "step": _vm.step, "readonly": _vm.readonly || !_vm.inputtable, "disabled": _vm.disabled || !_vm.decreasable && !_vm.increasable, "placeholder": _vm.placeholder, "autocomplete": "off" }, domProps: { "value": _vm.currentValue }, on: { "change": _vm.change, "paste": _vm.paste } }), _vm._v(" "), _vm.controls ? _c('button', { staticClass: "number-input__button number-input__button--plus", attrs: { "type": "button", "disabled": _vm.disabled || _vm.readonly || !_vm.increasable }, on: { "click": _vm.increase } }) : _vm._e()]);
+  var _obj;
+};
+var __vue_staticRenderFns__ = [];
+
+/* style */
+var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
+  if (!inject) return;
+  inject("data-v-607416cd_0", { source: "\n.number-input[data-v-607416cd]{display:block;max-width:100%;overflow:hidden;position:relative\n}\n.number-input__button[data-v-607416cd]{background-color:transparent;border:0;border-radius:.25rem;bottom:.0625rem;position:absolute;top:.0625rem;width:2.5rem\n}\n.number-input__button[data-v-607416cd]:focus{outline:0\n}\n.number-input__button[data-v-607416cd]:hover::after,.number-input__button[data-v-607416cd]:hover::before{background-color:#0074d9\n}\n.number-input__button[data-v-607416cd]:disabled::after,.number-input__button[data-v-607416cd]:disabled::before{background-color:#ddd\n}\n.number-input__button[data-v-607416cd]::after,.number-input__button[data-v-607416cd]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s\n}\n.number-input__button[data-v-607416cd]::before{height:.0625rem;width:50%\n}\n.number-input__button[data-v-607416cd]::after{height:50%;width:.0625rem\n}\n.number-input__button--minus[data-v-607416cd]{border-right:.0625rem solid #ddd;border-bottom-right-radius:0;border-top-right-radius:0;left:.0625rem\n}\n.number-input__button--minus[data-v-607416cd]::after{visibility:hidden\n}\n.number-input__button--plus[data-v-607416cd]{border-left:.0625rem solid #ddd;border-bottom-left-radius:0;border-top-left-radius:0;right:.0625rem\n}\n.number-input__input[data-v-607416cd]{border-radius:.25rem;border:1px solid #ddd;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%\n}\n.number-input__input[data-v-607416cd]::-webkit-inner-spin-button,.number-input__input[data-v-607416cd]::-webkit-outer-spin-button{appearance:none\n}\n.number-input__input[data-v-607416cd]:focus{border-color:#0074d9;outline:0\n}\n.number-input__input[readonly][data-v-607416cd]{background-color:#f8f8f8\n}\n.number-input__input[data-v-607416cd]:disabled{background-color:#f8f8f8;opacity:.65\n}\n.number-input--inline[data-v-607416cd]{display:inline-block\n}\n.number-input--inline>input[data-v-607416cd]{display:inline-block;width:12.5rem\n}\n.number-input--center>input[data-v-607416cd]{text-align:center\n}\n.number-input--controls>input[data-v-607416cd]{padding-left:3.375rem;padding-right:3.375rem\n}\n.number-input--small>input[data-v-607416cd]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem\n}\n.number-input--small.number-input--inline>input[data-v-607416cd]{width:10rem\n}\n.number-input--small.number-input--controls>button[data-v-607416cd]{width:2rem\n}\n.number-input--small.number-input--controls>input[data-v-607416cd]{padding-left:2.5rem;padding-right:2.5rem\n}\n.number-input--large>input[data-v-607416cd]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem\n}\n.number-input--large.number-input--inline>input[data-v-607416cd]{width:15rem\n}\n.number-input--large.number-input--controls>button[data-v-607416cd]{width:3rem\n}\n.number-input--large.number-input--controls>input[data-v-607416cd]{padding-left:4rem;padding-right:4rem\n}", map: undefined, media: undefined });
+};
+/* scoped */
+var __vue_scope_id__ = "data-v-607416cd";
+/* module identifier */
+var __vue_module_identifier__ = undefined;
+/* functional template */
+var __vue_is_functional_template__ = false;
+/* component normalizer */
+function __vue_normalize__(template, style, script$$1, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "index.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  {
+    var hook = void 0;
+    if (style) {
+      hook = function hook(context) {
+        style.call(this, createInjector(context));
+      };
+    }
+
+    if (hook !== undefined) {
+      if (component.functional) {
+        // register for functional component in vue file
+        var originalRender = component.render;
+        component.render = function renderWithStyleInjection(h, context) {
+          hook.call(context);
+          return originalRender(h, context);
+        };
+      } else {
+        // inject component registration as beforeCreate hook
+        var existing = component.beforeCreate;
+        component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+      }
+    }
+  }
+
+  return component;
+}
+/* style inject */
+function __vue_create_injector__() {
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var styles = __vue_create_injector__.styles || (__vue_create_injector__.styles = {});
+  var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+
+  return function addStyle(id, css) {
+    if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return; // SSR styles are present.
+
+    var group = isOldIE ? css.media || 'default' : id;
+    var style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
+
+    if (!style.ids.includes(id)) {
+      var code = css.source;
+      var index = style.ids.length;
+
+      style.ids.push(id);
+
+      if (css.map) {
+        // https://developer.chrome.com/devtools/docs/javascript-debugging
+        // this makes source maps inside style tags work properly in Chrome
+        code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
+        // http://stackoverflow.com/a/26603875
+        code += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) + ' */';
+      }
+
+      if (isOldIE) {
+        style.element = style.element || document.querySelector('style[data-group=' + group + ']');
+      }
+
+      if (!style.element) {
+        var el = style.element = document.createElement('style');
+        el.type = 'text/css';
+
+        if (css.media) el.setAttribute('media', css.media);
+        if (isOldIE) {
+          el.setAttribute('data-group', group);
+          el.setAttribute('data-next-index', '0');
+        }
+
+        head.appendChild(el);
+      }
+
+      if (isOldIE) {
+        index = parseInt(style.element.getAttribute('data-next-index'));
+        style.element.setAttribute('data-next-index', index + 1);
+      }
+
+      if (style.element.styleSheet) {
+        style.parts.push(code);
+        style.element.styleSheet.cssText = style.parts.filter(Boolean).join('\n');
+      } else {
+        var textNode = document.createTextNode(code);
+        var nodes = style.element.childNodes;
+        if (nodes[index]) style.element.removeChild(nodes[index]);
+        if (nodes.length) style.element.insertBefore(textNode, nodes[index]);else style.element.appendChild(textNode);
+      }
+    }
+  };
+}
+/* style inject SSR */
+
+var index = __vue_normalize__({ render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, __vue_create_injector__, undefined);
 
 module.exports = index;

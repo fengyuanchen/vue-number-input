@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2 (Aug 5, 2018)
+
+- Fix the `0.30000000000000004` problem (#6).
+
 ## 0.5.1 (Jun 9, 2018)
 
 - Change the input value only when it is mounted (#4).

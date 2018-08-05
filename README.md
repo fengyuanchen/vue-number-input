@@ -4,7 +4,8 @@
 
 > Number input component for [Vue.js](https://vuejs.org/).
 
-- [Docs & demo](https://fengyuanchen.github.io/vue-number-input)
+- [Docs](src/README.md)
+- [Demo](https://fengyuanchen.github.io/vue-number-input)
 
 ## Main
 
@@ -59,14 +60,6 @@ In browser:
 - Edge (latest)
 - Internet Explorer 9+
 
-## Contributing
-
-Please read through our [contributing guidelines](.github/CONTRIBUTING.md).
-
-## Versioning
-
-Maintained under the [Semantic Versioning guidelines](http://semver.org).
-
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Chen Fengyuan](http://chenfengyuan.com)
+[MIT](https://opensource.org/licenses/MIT) © [Chen Fengyuan](https://chenfengyuan.com)
