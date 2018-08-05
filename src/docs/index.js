@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './app.vue';
 import Demo from './components/demo.vue';
-import VueNumberInput from '../../src/index.vue';
+import VueNumberInput from '../index.vue';
 
 Vue.component('demo', Demo);
 Vue.component(VueNumberInput.name, VueNumberInput);

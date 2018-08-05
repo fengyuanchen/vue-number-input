@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<style>
-  @block demo {
+<style lang="scss">
+ .demo {
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     border: 1px solid #eee;

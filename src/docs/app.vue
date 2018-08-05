@@ -69,13 +69,13 @@
 
       script.async = true;
       script.id = '_carbonads_js';
-      script.src = '//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=fengyuanchen';
+      script.src = '//cdn.carbonads.com/carbon.js?serve=CKYI55Q7&placement=fengyuanchengithubio';
       this.$refs.carbonads.appendChild(script);
     },
   };
 </script>
 
-<style>
+<style lang="scss">
   .markdown-body {
     table {
       display: table;
