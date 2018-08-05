@@ -14,6 +14,7 @@
 <script>
   const isNaN = Number.isNaN || window.isNaN;
   const REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
+  const normalizeDecimalNumber = value => parseFloat(value.toFixed(10));
 
   export default {
     name: 'number-input',
@@ -128,7 +129,10 @@
             currentValue = 0;
           }
 
-          this.setValue(Math.min(this.max, Math.max(this.min, currentValue - this.step)));
+          this.setValue(Math.min(this.max, Math.max(
+            this.min,
+            normalizeDecimalNumber(currentValue - this.step),
+          )));
         }
       },
 
@@ -143,7 +147,10 @@
             currentValue = 0;
           }
 
-          this.setValue(Math.min(this.max, Math.max(this.min, currentValue + this.step)));
+          this.setValue(Math.min(this.max, Math.max(
+            this.min,
+            normalizeDecimalNumber(currentValue + this.step),
+          )));
         }
       },
 
@@ -182,14 +189,14 @@
   };
 </script>
 
-<style scoped>
-  @block number-input {
+<style lang="scss" scoped>
+  .number-input {
     display: block;
     max-width: 100%;
     overflow: hidden;
     position: relative;
 
-    @element button {
+    &__button {
       background-color: transparent;
       border: 0;
       border-radius: .25rem;
@@ -237,7 +244,7 @@
         width: .0625rem;
       }
 
-      @modifier minus {
+     &--minus {
         border-right: .0625rem solid #ddd;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
@@ -248,7 +255,7 @@
         }
       }
 
-      @modifier plus {
+     &--plus {
         border-left: .0625rem solid #ddd;
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
@@ -256,7 +263,7 @@
       }
     }
 
-    @element input {
+    &__input {
       border-radius: .25rem;
       border: 1px solid #ddd;
       display: block;
@@ -289,7 +296,7 @@
       }
     }
 
-    @modifier inline {
+   &--inline {
       display: inline-block;
 
       & > input {
@@ -298,20 +305,20 @@
       }
     }
 
-    @modifier center {
+   &--center {
       & > input {
         text-align: center;
       }
     }
 
-    @modifier controls {
+   &--controls {
       & > input {
         padding-left: 3.375rem;
         padding-right: 3.375rem;
       }
     }
 
-    @modifier small {
+   &--small {
       & > input {
         border-radius: .1875rem;
         font-size: .875rem;
@@ -332,7 +339,7 @@
       }
     }
 
-    @modifier large {
+   &--large {
       & > input {
         border-radius: .3125rem;
         font-size: 1.25rem;
