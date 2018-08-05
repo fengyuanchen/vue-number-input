@@ -25,6 +25,7 @@ module.exports = (config) => {
     webpack: {
       mode: 'production',
       module: webpackConfig.module,
+      plugins: webpackConfig.plugins,
       resolve: webpackConfig.resolve,
     },
   });

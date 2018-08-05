@@ -1,10 +1,7 @@
 {
   "presets": [
     ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["last 2 versions", "ie >= 9"]
-      }
+      "modules": false
     }],
     "stage-0"
   ]

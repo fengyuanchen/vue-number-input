@@ -1,10 +1,10 @@
-const babel = require('rollup-plugin-babel');
-const changeCase = require('change-case');
-const commonjs = require('rollup-plugin-commonjs');
-const createBanner = require('create-banner');
-const nodeResolve = require('rollup-plugin-node-resolve');
-const vue = require('rollup-plugin-vue');
-const pkg = require('./package');
+import babel from 'rollup-plugin-babel';
+import changeCase from 'change-case';
+import commonjs from 'rollup-plugin-commonjs';
+import createBanner from 'create-banner';
+import nodeResolve from 'rollup-plugin-node-resolve';
+import vue from 'rollup-plugin-vue';
+import pkg from './package.json';
 
 pkg.name = pkg.name.replace(/^.+\//, '');
 
@@ -14,7 +14,7 @@ const banner = createBanner({
   },
 });
 
-module.exports = {
+export default {
   input: 'src/index.vue',
   output: [
     {
@@ -41,10 +41,7 @@ module.exports = {
   plugins: [
     nodeResolve(),
     commonjs(),
-    vue({
-      autoStyles: false,
-      css: true,
-    }),
+    vue(),
     babel({
       plugins: ['external-helpers'],
     }),
