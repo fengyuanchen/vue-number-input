@@ -134,3 +134,5 @@ The input is not inputtable, but still allow to change the value by controls.
 | Name | Parameters | Description |
 | --- | --- | --- |
 | change | `(newValue, oldValue)` | Fire when the value is changed. |
+| exceeds-max | `(value)` | Fire when the new value exceeds the max value. |
+| below-min | `(value)` | Fire when the new value is below the min value. |

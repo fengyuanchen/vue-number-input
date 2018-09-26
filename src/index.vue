@@ -105,7 +105,17 @@
        * @param {string} event - The new value.
        */
       change(event) {
-        this.setValue(Math.min(this.max, Math.max(this.min, event.target.value)));
+        const { value } = event.target;
+
+        if (value > this.max) {
+          this.$emit('exceeds-max', value);
+        }
+
+        if (value < this.min) {
+          this.$emit('below-min', value);
+        }
+
+        this.setValue(Math.min(this.max, Math.max(this.min, value)));
       },
 
       /**
