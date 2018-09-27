@@ -105,7 +105,13 @@
        * @param {string} event - The new value.
        */
       change(event) {
-        const { value } = event.target;
+        let value;
+
+        if (typeof event === 'object' && typeof event !== 'number') {
+          ({ value } = event.target);
+        } else {
+          value = event;
+        }
 
         if (value > this.max) {
           this.$emit('exceeds-max', value);
@@ -194,7 +200,7 @@
     },
 
     created() {
-      this.setValue(this.value);
+      this.change(this.value);
     },
   };
 </script>
