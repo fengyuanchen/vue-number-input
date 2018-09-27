@@ -132,4 +132,42 @@ describe('<number-input>', () => {
 
     expect(vm.$el.querySelector('input').valueAsNumber).to.equal(10);
   });
+
+  it('fire exceeds-max event', (done) => {
+    const vm = new Vue({
+      data() {
+        return {
+          error: false,
+        };
+      },
+
+      template: '<number-input @exceeds-max="error = true" :value="20" :max="10"></number-input>',
+
+      mounted() {
+        expect(this.error).to.be.true;
+        done();
+      },
+    }).$mount();
+
+    expect(vm.$el.querySelector('input').valueAsNumber).to.equal(10);
+  });
+
+  it('fire below-min event', (done) => {
+    const vm = new Vue({
+      data() {
+        return {
+          error: false,
+        };
+      },
+
+      template: '<number-input @below-min="error = true" :value="10" :min="20"></number-input>',
+
+      mounted() {
+        expect(this.error).to.be.true;
+        done();
+      },
+    }).$mount();
+
+    expect(vm.$el.querySelector('input').valueAsNumber).to.equal(20);
+  });
 });
