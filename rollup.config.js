@@ -47,7 +47,7 @@ export default {
       },
     }),
     babel({
-      plugins: ['external-helpers'],
+      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.vue'],
     }),
   ],
 };
