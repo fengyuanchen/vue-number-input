@@ -178,13 +178,14 @@
     },
 
     watch: {
-      value(newValue) {
-        this.setValue(newValue);
+      value: {
+        immediate: true,
+        handler(value) {
+          if (value !== this.currentValue) {
+            this.setValue(value);
+          }
+        },
       },
-    },
-
-    created() {
-      this.setValue(this.value);
     },
   };
 </script>
