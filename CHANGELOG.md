@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.3 (Dec 1, 2018)
+
+- Fix the issue of triggering `change` event twice (#8).
+- Fix the issue of input value updating (#9).
+
 ## 0.5.2 (Aug 5, 2018)
 
 - Fix the `0.30000000000000004` problem (#6).
