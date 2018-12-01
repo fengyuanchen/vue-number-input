@@ -6,13 +6,7 @@ process.env.CHROME_BIN = puppeteer.executablePath();
 module.exports = (config) => {
   config.set({
     autoWatch: false,
-    browsers: ['ChromeHeadlessWithoutSandbox'],
-    customLaunchers: {
-      ChromeHeadlessWithoutSandbox: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox'],
-      },
-    },
+    browsers: ['ChromeHeadless'],
     files: [
       './index.js',
     ],
