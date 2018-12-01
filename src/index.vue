@@ -14,7 +14,10 @@
 <script>
   const isNaN = Number.isNaN || window.isNaN;
   const REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
-  const normalizeDecimalNumber = value => parseFloat(value.toFixed(10));
+  const REGEXP_DECIMALS = /\.\d*(?:0|9){10}\d*$/;
+  const normalizeDecimalNumber = (value, times = 100000000000) => (
+    REGEXP_DECIMALS.test(value) ? (Math.round(value * times) / times) : value
+  );
 
   export default {
     name: 'number-input',
