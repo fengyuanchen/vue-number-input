@@ -10,6 +10,7 @@
           <nav class="nav navbar-nav">
             <a class="nav-link" :href="`//github.com/${repository}`" title="View the GitHub project">GitHub</a>
             <a class="nav-link" :href="`//github.com/${repository}/blob/master/LICENSE`">License</a>
+            <a class="nav-link" href="https://fengyuanchen.github.io" title="More projects">More</a>
             <a class="nav-link" :href="author.url" title="About the author">About</a>
           </nav>
         </div>
