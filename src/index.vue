@@ -190,6 +190,7 @@
 <style lang="scss" scoped>
   .number-input {
     display: block;
+    font-size: 0;
     max-width: 100%;
     overflow: hidden;
     position: relative;
@@ -198,9 +199,9 @@
       background-color: transparent;
       border: 0;
       border-radius: .25rem;
-      bottom: .0625rem;
+      bottom: 1px;
       position: absolute;
-      top: .0625rem;
+      top: 1px;
       width: 2.5rem;
 
       &:focus {
@@ -233,31 +234,31 @@
       }
 
       &::before {
-        height: .0625rem;
+        height: 1px;
         width: 50%;
       }
 
       &::after {
         height: 50%;
-        width: .0625rem;
+        width: 1px;
       }
 
-     &--minus {
-        border-right: .0625rem solid #ddd;
+      &--minus {
+        border-right: 1px solid #ddd;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
-        left: .0625rem;
+        left: 1px;
 
         &::after {
           visibility: hidden;
         }
       }
 
-     &--plus {
-        border-left: .0625rem solid #ddd;
+      &--plus {
+        border-left: 1px solid #ddd;
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
-        right: .0625rem;
+        right: 1px;
       }
     }
 
@@ -294,7 +295,7 @@
       }
     }
 
-   &--inline {
+    &--inline {
       display: inline-block;
 
       & > input {
@@ -303,20 +304,20 @@
       }
     }
 
-   &--center {
+    &--center {
       & > input {
         text-align: center;
       }
     }
 
-   &--controls {
+    &--controls {
       & > input {
         padding-left: 3.375rem;
         padding-right: 3.375rem;
       }
     }
 
-   &--small {
+    &--small {
       & > input {
         border-radius: .1875rem;
         font-size: .875rem;
@@ -337,7 +338,7 @@
       }
     }
 
-   &--large {
+    &--large {
       & > input {
         border-radius: .3125rem;
         font-size: 1.25rem;
