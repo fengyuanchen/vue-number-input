@@ -150,9 +150,15 @@ export default {
   watch: {
     value: {
       immediate: true,
-      handler(value) {
-        if (value !== this.currentValue) {
-          this.setValue(value);
+      handler(newValue, oldValue) {
+        if (
+          // Avoid to trigger change event when created
+          !(isNaN(newValue) && typeof oldValue === 'undefined')
+
+          // Avoid infinite loop
+          && newValue !== this.currentValue
+        ) {
+          this.setValue(newValue);
         }
       },
     },
