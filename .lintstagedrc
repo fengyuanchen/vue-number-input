@@ -1,3 +1,7 @@
 {
-  "src/**/*.{js,vue}|*.config.js": ["eslint --fix", "git add"]
+  "linters": {
+    "*.js": ["eslint --fix", "git add"],
+    "*.{css,vue,html}": ["stylelint --fix", "git add"]
+  },
+  "ignore": ["{dist,docs}/**"]
 }

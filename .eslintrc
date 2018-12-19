@@ -1,14 +1,31 @@
 {
   "root": true,
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base",
+    "plugin:vue/recommended"
+  ],
   "env": {
-    "browser": true
+    "browser": true,
+    "mocha": true
+  },
+  "globals": {
+    "Vue": true,
+    "expect": true
   },
   "plugins": [
-    "html"
+    "html",
+    "vue"
   ],
   "rules": {
     "import/no-extraneous-dependencies": "off",
     "no-restricted-properties": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["test/**/*.spec.js"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ]
 }
