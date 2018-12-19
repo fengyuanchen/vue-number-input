@@ -76,6 +76,14 @@
 </template>
 ```
 
+## Rounded
+
+```html
+<template>
+  <number-input :value="1.5" inline controls rounded></number-input>
+</template>
+```
+
 ## Not inputtable
 
 The input is not inputtable, but still allow to change the value by controls.
@@ -83,14 +91,6 @@ The input is not inputtable, but still allow to change the value by controls.
 ```html
 <template>
   <number-input :value="1" :min="1" :max="3" :inputtable="false" inline controls></number-input>
-</template>
-```
-
-## Rounded
-
-```html
-<template>
-  <number-input :value="1.5" inline controls rounded></number-input>
 </template>
 ```
 
