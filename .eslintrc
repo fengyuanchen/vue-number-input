@@ -1,6 +1,10 @@
 {
   "root": true,
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base",
+    "plugin:vue/essential",
+    "eslint:recommended"
+  ],
   "env": {
     "browser": true
   },
