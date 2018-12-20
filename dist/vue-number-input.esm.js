@@ -1,11 +1,11 @@
 /*!
- * vue-number-input v0.5.3
+ * vue-number-input v1.0.0
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-12-01T13:40:57.063Z
+ * Date: 2018-12-20T11:55:17.892Z
  */
 
 function _defineProperty(obj, key, value) {
@@ -55,6 +55,36 @@ function _objectSpread(target) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var isNaN = Number.isNaN || window.isNaN;
 var REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
 var REGEXP_DECIMALS = /\.\d*(?:0|9){10}\d*$/;
@@ -65,12 +95,7 @@ var normalizeDecimalNumber = function normalizeDecimalNumber(value) {
 };
 
 var script = {
-  name: 'number-input',
-  data: function data() {
-    return {
-      currentValue: NaN
-    };
-  },
+  name: 'NumberInput',
   model: {
     event: 'change'
   },
@@ -91,16 +116,33 @@ var script = {
       type: Number,
       default: -Infinity
     },
-    name: String,
-    placeholder: String,
+    name: {
+      type: String,
+      default: undefined
+    },
+    placeholder: {
+      type: String,
+      default: undefined
+    },
     readonly: Boolean,
     rounded: Boolean,
-    size: String,
+    size: {
+      type: String,
+      default: undefined
+    },
     step: {
       type: Number,
       default: 1
     },
-    value: Number
+    value: {
+      type: Number,
+      default: NaN
+    }
+  },
+  data: function data() {
+    return {
+      currentValue: NaN
+    };
   },
   computed: {
     /**
@@ -132,6 +174,18 @@ var script = {
       return listeners;
     }
   },
+  watch: {
+    value: {
+      immediate: true,
+      handler: function handler(newValue, oldValue) {
+        if ( // Avoid to trigger change event when created
+        !(isNaN(newValue) && typeof oldValue === 'undefined') // Avoid infinite loop
+        && newValue !== this.currentValue) {
+          this.setValue(newValue);
+        }
+      }
+    }
+  },
   methods: {
     /**
      * Change event handler.
@@ -146,7 +200,9 @@ var script = {
      * @param {Event} event - Event object.
      */
     paste: function paste(event) {
-      if (!REGEXP_NUMBER.test(event.clipboardData.getData('text'))) {
+      var clipboardData = event.clipboardData || window.clipboardData;
+
+      if (clipboardData && !REGEXP_NUMBER.test(clipboardData.getData('text'))) {
         event.preventDefault();
       }
     },
@@ -195,16 +251,6 @@ var script = {
 
       this.currentValue = newValue;
       this.$emit('change', newValue, oldValue);
-    }
-  },
-  watch: {
-    value: {
-      immediate: true,
-      handler: function handler(value) {
-        if (value !== this.currentValue) {
-          this.setValue(value);
-        }
-      }
     }
   }
 };
@@ -275,8 +321,8 @@ var __vue_staticRenderFns__ = [];
 
 var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-5be07d54_0", {
-    source: "\n.number-input[data-v-5be07d54]{display:block;max-width:100%;overflow:hidden;position:relative\n}\n.number-input__button[data-v-5be07d54]{background-color:transparent;border:0;border-radius:.25rem;bottom:.0625rem;position:absolute;top:.0625rem;width:2.5rem\n}\n.number-input__button[data-v-5be07d54]:focus{outline:0\n}\n.number-input__button[data-v-5be07d54]:hover::after,.number-input__button[data-v-5be07d54]:hover::before{background-color:#0074d9\n}\n.number-input__button[data-v-5be07d54]:disabled::after,.number-input__button[data-v-5be07d54]:disabled::before{background-color:#ddd\n}\n.number-input__button[data-v-5be07d54]::after,.number-input__button[data-v-5be07d54]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s\n}\n.number-input__button[data-v-5be07d54]::before{height:.0625rem;width:50%\n}\n.number-input__button[data-v-5be07d54]::after{height:50%;width:.0625rem\n}\n.number-input__button--minus[data-v-5be07d54]{border-right:.0625rem solid #ddd;border-bottom-right-radius:0;border-top-right-radius:0;left:.0625rem\n}\n.number-input__button--minus[data-v-5be07d54]::after{visibility:hidden\n}\n.number-input__button--plus[data-v-5be07d54]{border-left:.0625rem solid #ddd;border-bottom-left-radius:0;border-top-left-radius:0;right:.0625rem\n}\n.number-input__input[data-v-5be07d54]{border-radius:.25rem;border:1px solid #ddd;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%\n}\n.number-input__input[data-v-5be07d54]::-webkit-inner-spin-button,.number-input__input[data-v-5be07d54]::-webkit-outer-spin-button{appearance:none\n}\n.number-input__input[data-v-5be07d54]:focus{border-color:#0074d9;outline:0\n}\n.number-input__input[readonly][data-v-5be07d54]{background-color:#f8f8f8\n}\n.number-input__input[data-v-5be07d54]:disabled{background-color:#f8f8f8;opacity:.65\n}\n.number-input--inline[data-v-5be07d54]{display:inline-block\n}\n.number-input--inline>input[data-v-5be07d54]{display:inline-block;width:12.5rem\n}\n.number-input--center>input[data-v-5be07d54]{text-align:center\n}\n.number-input--controls>input[data-v-5be07d54]{padding-left:3.375rem;padding-right:3.375rem\n}\n.number-input--small>input[data-v-5be07d54]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem\n}\n.number-input--small.number-input--inline>input[data-v-5be07d54]{width:10rem\n}\n.number-input--small.number-input--controls>button[data-v-5be07d54]{width:2rem\n}\n.number-input--small.number-input--controls>input[data-v-5be07d54]{padding-left:2.5rem;padding-right:2.5rem\n}\n.number-input--large>input[data-v-5be07d54]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem\n}\n.number-input--large.number-input--inline>input[data-v-5be07d54]{width:15rem\n}\n.number-input--large.number-input--controls>button[data-v-5be07d54]{width:3rem\n}\n.number-input--large.number-input--controls>input[data-v-5be07d54]{padding-left:4rem;padding-right:4rem\n}",
+  inject("data-v-5ce9bf9f_0", {
+    source: ".number-input[data-v-5ce9bf9f]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-5ce9bf9f]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-5ce9bf9f]:focus{outline:0}.number-input__button[data-v-5ce9bf9f]:hover::after,.number-input__button[data-v-5ce9bf9f]:hover::before{background-color:#0074d9}.number-input__button[data-v-5ce9bf9f]:disabled{opacity:.65}.number-input__button[data-v-5ce9bf9f]:disabled::after,.number-input__button[data-v-5ce9bf9f]:disabled::before{background-color:#ddd}.number-input__button[data-v-5ce9bf9f]::after,.number-input__button[data-v-5ce9bf9f]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-5ce9bf9f]::before{height:1px;width:50%}.number-input__button[data-v-5ce9bf9f]::after{height:50%;width:1px}.number-input__button--minus[data-v-5ce9bf9f]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-5ce9bf9f]::after{visibility:hidden}.number-input__button--plus[data-v-5ce9bf9f]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-5ce9bf9f]{background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-5ce9bf9f]::-webkit-inner-spin-button,.number-input__input[data-v-5ce9bf9f]::-webkit-outer-spin-button{appearance:none}.number-input__input[data-v-5ce9bf9f]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-5ce9bf9f]:disabled,.number-input__input[readonly][data-v-5ce9bf9f]{background-color:#f8f8f8}.number-input--inline[data-v-5ce9bf9f]{display:inline-block}.number-input--inline>input[data-v-5ce9bf9f]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-5ce9bf9f]{text-align:center}.number-input--controls>input[data-v-5ce9bf9f]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-5ce9bf9f]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-5ce9bf9f]{width:10rem}.number-input--small.number-input--controls>button[data-v-5ce9bf9f]{width:2rem}.number-input--small.number-input--controls>input[data-v-5ce9bf9f]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-5ce9bf9f]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-5ce9bf9f]{width:15rem}.number-input--large.number-input--controls>button[data-v-5ce9bf9f]{width:3rem}.number-input--large.number-input--controls>input[data-v-5ce9bf9f]{padding-left:4rem;padding-right:4rem}",
     map: undefined,
     media: undefined
   });
@@ -284,7 +330,7 @@ var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
 /* scoped */
 
 
-var __vue_scope_id__ = "data-v-5be07d54";
+var __vue_scope_id__ = "data-v-5ce9bf9f";
 /* module identifier */
 
 var __vue_module_identifier__ = undefined;

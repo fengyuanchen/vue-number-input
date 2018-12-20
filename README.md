@@ -1,8 +1,8 @@
 # vue-number-input
 
-[![Build Status](https://travis-ci.org/fengyuanchen/vue-number-input.svg)](https://travis-ci.org/fengyuanchen/vue-number-input) [![Downloads](https://img.shields.io/npm/dm/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input) [![Version](https://img.shields.io/npm/v/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input)
+[![Build Status](https://img.shields.io/travis/fengyuanchen/vue-number-input.svg)](https://travis-ci.org/fengyuanchen/vue-number-input) [![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/vue-number-input.svg)](https://codecov.io/gh/fengyuanchen/vue-number-input) [![Downloads](https://img.shields.io/npm/dm/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input) [![Version](https://img.shields.io/npm/v/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input)
 
-> Number input component for [Vue.js](https://vuejs.org/).
+> Number input component for [Vue.js](https://vuejs.org).
 
 - [Docs](src/README.md)
 - [Demo](https://fengyuanchen.github.io/vue-number-input)
@@ -59,6 +59,10 @@ In browser:
 - Opera (latest)
 - Edge (latest)
 - Internet Explorer 9+
+
+## Versioning
+
+Maintained under the [Semantic Versioning guidelines](https://semver.org).
 
 ## License
 

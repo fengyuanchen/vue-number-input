@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0 (Dec 20, 2018)
+
+- Limit the minimum value of width, height and border to 1px (#10).
+- Avoid to trigger change event when created for better performance.
+- Refactor test suites for better code coverage.
+
 ## 0.5.3 (Dec 1, 2018)
 
 - Fix the issue of triggering `change` event twice (#8).
