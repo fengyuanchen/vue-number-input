@@ -152,7 +152,7 @@ export default {
       immediate: true,
       handler(newValue, oldValue) {
         if (
-          // Avoid to trigger change event when created
+          // Avoid triggering change event when created
           !(isNaN(newValue) && typeof oldValue === 'undefined')
 
           // Avoid infinite loop
