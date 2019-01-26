@@ -5,12 +5,7 @@
     "plugin:vue/recommended"
   ],
   "env": {
-    "browser": true,
-    "mocha": true
-  },
-  "globals": {
-    "Vue": true,
-    "expect": true
+    "browser": true
   },
   "plugins": [
     "html",
@@ -22,7 +17,14 @@
   },
   "overrides": [
     {
-      "files": ["test/**/*.spec.js"],
+      "files": ["test/**/*.js"],
+      "env": {
+        "mocha": true
+      },
+      "globals": {
+        "Vue": true,
+        "expect": true
+      },
       "rules": {
         "no-unused-expressions": "off"
       }
