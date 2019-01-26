@@ -1,18 +1,18 @@
 /*!
- * vue-number-input v1.0.0
+ * vue-number-input v1.1.0
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2018-12-20T11:55:17.892Z
+ * Date: 2019-01-26T06:42:32.284Z
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  global.VueNumberInput = factory();
-}(typeof self !== 'undefined' ? self : this, function () { 'use strict';
+  (global = global || self, global.VueNumberInput = factory());
+}(this, function () { 'use strict';
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -184,7 +184,7 @@
       value: {
         immediate: true,
         handler: function handler(newValue, oldValue) {
-          if ( // Avoid to trigger change event when created
+          if ( // Avoid triggering change event when created
           !(isNaN(newValue) && typeof oldValue === 'undefined') // Avoid infinite loop
           && newValue !== this.currentValue) {
             this.setValue(newValue);
@@ -261,8 +261,147 @@
     }
   };
 
+  function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
+  /* server only */
+  , shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+      createInjectorSSR = createInjector;
+      createInjector = shadowMode;
+      shadowMode = false;
+    } // Vue.extend constructor export interop.
+
+
+    var options = typeof script === 'function' ? script.options : script; // render functions
+
+    if (template && template.render) {
+      options.render = template.render;
+      options.staticRenderFns = template.staticRenderFns;
+      options._compiled = true; // functional template
+
+      if (isFunctionalTemplate) {
+        options.functional = true;
+      }
+    } // scopedId
+
+
+    if (scopeId) {
+      options._scopeId = scopeId;
+    }
+
+    var hook;
+
+    if (moduleIdentifier) {
+      // server build
+      hook = function hook(context) {
+        // 2.3 injection
+        context = context || // cached call
+        this.$vnode && this.$vnode.ssrContext || // stateful
+        this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
+        // 2.2 with runInNewContext: true
+
+        if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+          context = __VUE_SSR_CONTEXT__;
+        } // inject component styles
+
+
+        if (style) {
+          style.call(this, createInjectorSSR(context));
+        } // register component module identifier for async chunk inference
+
+
+        if (context && context._registeredComponents) {
+          context._registeredComponents.add(moduleIdentifier);
+        }
+      }; // used by ssr in case component is cached and beforeCreate
+      // never gets called
+
+
+      options._ssrRegister = hook;
+    } else if (style) {
+      hook = shadowMode ? function () {
+        style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+      } : function (context) {
+        style.call(this, createInjector(context));
+      };
+    }
+
+    if (hook) {
+      if (options.functional) {
+        // register for functional component in vue file
+        var originalRender = options.render;
+
+        options.render = function renderWithStyleInjection(h, context) {
+          hook.call(context);
+          return originalRender(h, context);
+        };
+      } else {
+        // inject component registration as beforeCreate hook
+        var existing = options.beforeCreate;
+        options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+      }
+    }
+
+    return script;
+  }
+
+  var normalizeComponent_1 = normalizeComponent;
+
+  var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+
+  function createInjector(context) {
+    return function (id, style) {
+      return addStyle(id, style);
+    };
+  }
+
+  var HEAD = document.head || document.getElementsByTagName('head')[0];
+  var styles = {};
+
+  function addStyle(id, css) {
+    var group = isOldIE ? css.media || 'default' : id;
+    var style = styles[group] || (styles[group] = {
+      ids: new Set(),
+      styles: []
+    });
+
+    if (!style.ids.has(id)) {
+      style.ids.add(id);
+      var code = css.source;
+
+      if (css.map) {
+        // https://developer.chrome.com/devtools/docs/javascript-debugging
+        // this makes source maps inside style tags work properly in Chrome
+        code += '\n/*# sourceURL=' + css.map.sources[0] + ' */'; // http://stackoverflow.com/a/26603875
+
+        code += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) + ' */';
+      }
+
+      if (!style.element) {
+        style.element = document.createElement('style');
+        style.element.type = 'text/css';
+        if (css.media) style.element.setAttribute('media', css.media);
+        HEAD.appendChild(style.element);
+      }
+
+      if ('styleSheet' in style.element) {
+        style.styles.push(code);
+        style.element.styleSheet.cssText = style.styles.filter(Boolean).join('\n');
+      } else {
+        var index = style.ids.size - 1;
+        var textNode = document.createTextNode(code);
+        var nodes = style.element.childNodes;
+        if (nodes[index]) style.element.removeChild(nodes[index]);
+        if (nodes.length) style.element.insertBefore(textNode, nodes[index]);else style.element.appendChild(textNode);
+      }
+    }
+  }
+
+  var browser = createInjector;
+
   /* script */
-  var __vue_script__ = script;
+  var __vue_script__ = script; // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
+
+  script.__file = "number-input.vue";
   /* template */
 
   var __vue_render__ = function __vue_render__() {
@@ -327,8 +466,8 @@
 
   var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-5ce9bf9f_0", {
-      source: ".number-input[data-v-5ce9bf9f]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-5ce9bf9f]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-5ce9bf9f]:focus{outline:0}.number-input__button[data-v-5ce9bf9f]:hover::after,.number-input__button[data-v-5ce9bf9f]:hover::before{background-color:#0074d9}.number-input__button[data-v-5ce9bf9f]:disabled{opacity:.65}.number-input__button[data-v-5ce9bf9f]:disabled::after,.number-input__button[data-v-5ce9bf9f]:disabled::before{background-color:#ddd}.number-input__button[data-v-5ce9bf9f]::after,.number-input__button[data-v-5ce9bf9f]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-5ce9bf9f]::before{height:1px;width:50%}.number-input__button[data-v-5ce9bf9f]::after{height:50%;width:1px}.number-input__button--minus[data-v-5ce9bf9f]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-5ce9bf9f]::after{visibility:hidden}.number-input__button--plus[data-v-5ce9bf9f]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-5ce9bf9f]{background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-5ce9bf9f]::-webkit-inner-spin-button,.number-input__input[data-v-5ce9bf9f]::-webkit-outer-spin-button{appearance:none}.number-input__input[data-v-5ce9bf9f]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-5ce9bf9f]:disabled,.number-input__input[readonly][data-v-5ce9bf9f]{background-color:#f8f8f8}.number-input--inline[data-v-5ce9bf9f]{display:inline-block}.number-input--inline>input[data-v-5ce9bf9f]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-5ce9bf9f]{text-align:center}.number-input--controls>input[data-v-5ce9bf9f]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-5ce9bf9f]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-5ce9bf9f]{width:10rem}.number-input--small.number-input--controls>button[data-v-5ce9bf9f]{width:2rem}.number-input--small.number-input--controls>input[data-v-5ce9bf9f]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-5ce9bf9f]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-5ce9bf9f]{width:15rem}.number-input--large.number-input--controls>button[data-v-5ce9bf9f]{width:3rem}.number-input--large.number-input--controls>input[data-v-5ce9bf9f]{padding-left:4rem;padding-right:4rem}",
+    inject("data-v-4e581dda_0", {
+      source: ".number-input[data-v-4e581dda]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-4e581dda]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-4e581dda]:focus{outline:0}.number-input__button[data-v-4e581dda]:hover::after,.number-input__button[data-v-4e581dda]:hover::before{background-color:#0074d9}.number-input__button[data-v-4e581dda]:disabled{opacity:.65}.number-input__button[data-v-4e581dda]:disabled::after,.number-input__button[data-v-4e581dda]:disabled::before{background-color:#ddd}.number-input__button[data-v-4e581dda]::after,.number-input__button[data-v-4e581dda]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-4e581dda]::before{height:1px;width:50%}.number-input__button[data-v-4e581dda]::after{height:50%;width:1px}.number-input__button--minus[data-v-4e581dda]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-4e581dda]::after{visibility:hidden}.number-input__button--plus[data-v-4e581dda]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-4e581dda]{background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-4e581dda]::-webkit-inner-spin-button,.number-input__input[data-v-4e581dda]::-webkit-outer-spin-button{appearance:none}.number-input__input[data-v-4e581dda]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-4e581dda]:disabled,.number-input__input[readonly][data-v-4e581dda]{background-color:#f8f8f8}.number-input--inline[data-v-4e581dda]{display:inline-block}.number-input--inline>input[data-v-4e581dda]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-4e581dda]{text-align:center}.number-input--controls>input[data-v-4e581dda]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-4e581dda]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-4e581dda]{width:10rem}.number-input--small.number-input--controls>button[data-v-4e581dda]{width:2rem}.number-input--small.number-input--controls>input[data-v-4e581dda]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-4e581dda]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-4e581dda]{width:15rem}.number-input--large.number-input--controls>button[data-v-4e581dda]{width:3rem}.number-input--large.number-input--controls>input[data-v-4e581dda]{padding-left:4rem;padding-right:4rem}",
       map: undefined,
       media: undefined
     });
@@ -336,129 +475,28 @@
   /* scoped */
 
 
-  var __vue_scope_id__ = "data-v-5ce9bf9f";
+  var __vue_scope_id__ = "data-v-4e581dda";
   /* module identifier */
 
   var __vue_module_identifier__ = undefined;
   /* functional template */
 
   var __vue_is_functional_template__ = false;
-  /* component normalizer */
-
-  function __vue_normalize__(template, style, script$$1, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
-    var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {}; // For security concerns, we use only base name in production mode.
-
-    component.__file = "index.vue";
-
-    if (!component.render) {
-      component.render = template.render;
-      component.staticRenderFns = template.staticRenderFns;
-      component._compiled = true;
-      if (functional) component.functional = true;
-    }
-
-    component._scopeId = scope;
-
-    {
-      var hook;
-
-      if (style) {
-        hook = function hook(context) {
-          style.call(this, createInjector(context));
-        };
-      }
-
-      if (hook !== undefined) {
-        if (component.functional) {
-          // register for functional component in vue file
-          var originalRender = component.render;
-
-          component.render = function renderWithStyleInjection(h, context) {
-            hook.call(context);
-            return originalRender(h, context);
-          };
-        } else {
-          // inject component registration as beforeCreate hook
-          var existing = component.beforeCreate;
-          component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-        }
-      }
-    }
-
-    return component;
-  }
-  /* style inject */
-
-
-  function __vue_create_injector__() {
-    var head = document.head || document.getElementsByTagName('head')[0];
-    var styles = __vue_create_injector__.styles || (__vue_create_injector__.styles = {});
-    var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
-    return function addStyle(id, css) {
-      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return; // SSR styles are present.
-
-      var group = isOldIE ? css.media || 'default' : id;
-      var style = styles[group] || (styles[group] = {
-        ids: [],
-        parts: [],
-        element: undefined
-      });
-
-      if (!style.ids.includes(id)) {
-        var code = css.source;
-        var index = style.ids.length;
-        style.ids.push(id);
-
-        if (css.map) {
-          // https://developer.chrome.com/devtools/docs/javascript-debugging
-          // this makes source maps inside style tags work properly in Chrome
-          code += '\n/*# sourceURL=' + css.map.sources[0] + ' */'; // http://stackoverflow.com/a/26603875
-
-          code += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) + ' */';
-        }
-
-        if (isOldIE) {
-          style.element = style.element || document.querySelector('style[data-group=' + group + ']');
-        }
-
-        if (!style.element) {
-          var el = style.element = document.createElement('style');
-          el.type = 'text/css';
-          if (css.media) el.setAttribute('media', css.media);
-
-          if (isOldIE) {
-            el.setAttribute('data-group', group);
-            el.setAttribute('data-next-index', '0');
-          }
-
-          head.appendChild(el);
-        }
-
-        if (isOldIE) {
-          index = parseInt(style.element.getAttribute('data-next-index'));
-          style.element.setAttribute('data-next-index', index + 1);
-        }
-
-        if (style.element.styleSheet) {
-          style.parts.push(code);
-          style.element.styleSheet.cssText = style.parts.filter(Boolean).join('\n');
-        } else {
-          var textNode = document.createTextNode(code);
-          var nodes = style.element.childNodes;
-          if (nodes[index]) style.element.removeChild(nodes[index]);
-          if (nodes.length) style.element.insertBefore(textNode, nodes[index]);else style.element.appendChild(textNode);
-        }
-      }
-    };
-  }
   /* style inject SSR */
 
-
-  var index = __vue_normalize__({
+  var NumberInput = normalizeComponent_1({
     render: __vue_render__,
     staticRenderFns: __vue_staticRenderFns__
-  }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, __vue_create_injector__, undefined);
+  }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, browser, undefined);
 
-  return index;
+  NumberInput.install = function (Vue) {
+    Vue.component(NumberInput.name, NumberInput);
+  };
+
+  if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.use(NumberInput);
+  }
+
+  return NumberInput;
 
 }));

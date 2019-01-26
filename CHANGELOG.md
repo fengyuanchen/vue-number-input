@@ -1,9 +1,15 @@
 # Changelog
 
+## 1.1.0 (Jan 26, 2019)
+
+- Support to use as a Vue plugin: `Vue.use(VueNumberInput)`.
+- Support to use as a Vue component: `Vue.component(VueNumberInput.name, VueNumberInput)`.
+- Register the component automatically once loaded in the browser.
+
 ## 1.0.0 (Dec 20, 2018)
 
 - Limit the minimum value of width, height and border to 1px (#10).
-- Avoid to trigger change event when created for better performance.
+- Avoid triggering change event when created for better performance.
 - Refactor test suites for better code coverage.
 
 ## 0.5.3 (Dec 1, 2018)

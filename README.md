@@ -22,14 +22,14 @@ dist/
 ### Installation
 
 ```shell
-npm install @chenfengyuan/vue-number-input vue
+npm install vue @chenfengyuan/vue-number-input
 ```
 
 In browser:
 
 ```html
-<script src="/path/to/vue.js"></script>
-<script src="/path/to/vue-number-input.js"></script>
+<script src="/path/to/vue.js"></script><!-- Vue.js is required -->
+<script src="/path/to/vue-number-input.js"></script><!-- Register automatically once loaded -->
 ```
 
 ### Usage
@@ -38,17 +38,15 @@ In browser:
 import Vue from 'vue';
 import VueNumberInput from '@chenfengyuan/vue-number-input';
 
+Vue.use(VueNumberInput);
+// Or
 Vue.component(VueNumberInput.name, VueNumberInput);
+// Or
+Vue.component('vue-number-input', VueNumberInput);
 ```
 
 ```html
 <number-input controls></number-input>
-```
-
-In browser:
-
-```html
-<script>Vue.component(VueNumberInput.name, VueNumberInput);</script>
 ```
 
 ## Browser support
