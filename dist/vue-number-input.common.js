@@ -1,11 +1,11 @@
 /*!
- * vue-number-input v1.1.0
+ * vue-number-input v1.1.1
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2019-01-26T06:42:32.284Z
+ * Date: 2019-03-09T05:25:23.336Z
  */
 
 'use strict';
@@ -44,6 +44,7 @@ function _objectSpread(target) {
   return target;
 }
 
+//
 //
 //
 //
@@ -252,6 +253,12 @@ var script = {
       }
 
       this.currentValue = newValue;
+
+      if (newValue === oldValue) {
+        // Force to override the number in the input box (#13).
+        this.$refs.input.value = newValue;
+      }
+
       this.$emit('change', newValue, oldValue);
     }
   }
@@ -395,12 +402,12 @@ function addStyle(id, css) {
 var browser = createInjector;
 
 /* script */
-var __vue_script__ = script; // For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
-
-script.__file = "number-input.vue";
+var __vue_script__ = script;
 /* template */
 
 var __vue_render__ = function __vue_render__() {
+  var _obj;
+
   var _vm = this;
 
   var _h = _vm.$createElement;
@@ -424,6 +431,7 @@ var __vue_render__ = function __vue_render__() {
       "click": _vm.decrease
     }
   }) : _vm._e(), _vm._v(" "), _c('input', {
+    ref: "input",
     staticClass: "number-input__input",
     attrs: {
       "type": "number",
@@ -453,8 +461,6 @@ var __vue_render__ = function __vue_render__() {
       "click": _vm.increase
     }
   }) : _vm._e()]);
-
-  var _obj;
 };
 
 var __vue_staticRenderFns__ = [];
@@ -462,8 +468,8 @@ var __vue_staticRenderFns__ = [];
 
 var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-4e581dda_0", {
-    source: ".number-input[data-v-4e581dda]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-4e581dda]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-4e581dda]:focus{outline:0}.number-input__button[data-v-4e581dda]:hover::after,.number-input__button[data-v-4e581dda]:hover::before{background-color:#0074d9}.number-input__button[data-v-4e581dda]:disabled{opacity:.65}.number-input__button[data-v-4e581dda]:disabled::after,.number-input__button[data-v-4e581dda]:disabled::before{background-color:#ddd}.number-input__button[data-v-4e581dda]::after,.number-input__button[data-v-4e581dda]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-4e581dda]::before{height:1px;width:50%}.number-input__button[data-v-4e581dda]::after{height:50%;width:1px}.number-input__button--minus[data-v-4e581dda]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-4e581dda]::after{visibility:hidden}.number-input__button--plus[data-v-4e581dda]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-4e581dda]{background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-4e581dda]::-webkit-inner-spin-button,.number-input__input[data-v-4e581dda]::-webkit-outer-spin-button{appearance:none}.number-input__input[data-v-4e581dda]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-4e581dda]:disabled,.number-input__input[readonly][data-v-4e581dda]{background-color:#f8f8f8}.number-input--inline[data-v-4e581dda]{display:inline-block}.number-input--inline>input[data-v-4e581dda]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-4e581dda]{text-align:center}.number-input--controls>input[data-v-4e581dda]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-4e581dda]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-4e581dda]{width:10rem}.number-input--small.number-input--controls>button[data-v-4e581dda]{width:2rem}.number-input--small.number-input--controls>input[data-v-4e581dda]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-4e581dda]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-4e581dda]{width:15rem}.number-input--large.number-input--controls>button[data-v-4e581dda]{width:3rem}.number-input--large.number-input--controls>input[data-v-4e581dda]{padding-left:4rem;padding-right:4rem}",
+  inject("data-v-016ae424_0", {
+    source: ".number-input[data-v-016ae424]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-016ae424]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-016ae424]:focus{outline:0}.number-input__button[data-v-016ae424]:hover::after,.number-input__button[data-v-016ae424]:hover::before{background-color:#0074d9}.number-input__button[data-v-016ae424]:disabled{opacity:.65}.number-input__button[data-v-016ae424]:disabled::after,.number-input__button[data-v-016ae424]:disabled::before{background-color:#ddd}.number-input__button[data-v-016ae424]::after,.number-input__button[data-v-016ae424]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-016ae424]::before{height:1px;width:50%}.number-input__button[data-v-016ae424]::after{height:50%;width:1px}.number-input__button--minus[data-v-016ae424]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-016ae424]::after{visibility:hidden}.number-input__button--plus[data-v-016ae424]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-016ae424]{background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-016ae424]::-webkit-inner-spin-button,.number-input__input[data-v-016ae424]::-webkit-outer-spin-button{-webkit-appearance:none}.number-input__input[data-v-016ae424]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-016ae424]:disabled,.number-input__input[readonly][data-v-016ae424]{background-color:#f8f8f8}.number-input--inline[data-v-016ae424]{display:inline-block}.number-input--inline>input[data-v-016ae424]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-016ae424]{text-align:center}.number-input--controls>input[data-v-016ae424]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-016ae424]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-016ae424]{width:10rem}.number-input--small.number-input--controls>button[data-v-016ae424]{width:2rem}.number-input--small.number-input--controls>input[data-v-016ae424]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-016ae424]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-016ae424]{width:15rem}.number-input--large.number-input--controls>button[data-v-016ae424]{width:3rem}.number-input--large.number-input--controls>input[data-v-016ae424]{padding-left:4rem;padding-right:4rem}",
     map: undefined,
     media: undefined
   });
@@ -471,7 +477,7 @@ var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
 /* scoped */
 
 
-var __vue_scope_id__ = "data-v-4e581dda";
+var __vue_scope_id__ = "data-v-016ae424";
 /* module identifier */
 
 var __vue_module_identifier__ = undefined;

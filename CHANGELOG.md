@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 (Mar 9, 2019)
+
+- Hide the spin box in number input box (#12).
+- Force to override the number in the input box (#13).
+
 ## 1.1.0 (Jan 26, 2019)
 
 - Support to use as a Vue plugin: `Vue.use(VueNumberInput)`.
