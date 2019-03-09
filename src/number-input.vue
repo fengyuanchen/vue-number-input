@@ -18,6 +18,7 @@
     />
     <input
       class="number-input__input"
+      ref="input"
       type="number"
       :name="name"
       :value="currentValue"
@@ -234,6 +235,12 @@ export default {
       }
 
       this.currentValue = newValue;
+
+      if (newValue === oldValue) {
+        // Force to override the number in the input box (#13).
+        this.$refs.input.value = newValue;
+      }
+
       this.$emit('change', newValue, oldValue);
     },
   },
