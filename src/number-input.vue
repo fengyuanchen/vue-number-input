@@ -17,8 +17,8 @@
       @click="decrease"
     />
     <input
-      class="number-input__input"
       ref="input"
+      class="number-input__input"
       type="number"
       :name="name"
       :value="currentValue"
