@@ -326,6 +326,7 @@ export default {
     }
 
     &__input {
+      -moz-appearance: textfield;
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 0.25rem;
