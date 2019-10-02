@@ -1,6 +1,6 @@
 # Changelog
 
-## next
+## 1.1.2 (Oct 2, 2019)
 
 - Hide the spin box in number input box in Firefox (#17).
 

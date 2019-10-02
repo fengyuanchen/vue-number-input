@@ -1,11 +1,11 @@
 /*!
- * vue-number-input v1.1.1
+ * vue-number-input v1.1.2
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2019-03-09T05:25:23.336Z
+ * Date: 2019-10-02T09:42:22.295Z
  */
 
 'use strict';
@@ -25,20 +25,35 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _objectSpread(target) {
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
     }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
   }
 
   return target;
@@ -171,7 +186,7 @@ var script = {
      * @returns {Object} Return filtered listeners.
      */
     listeners: function listeners() {
-      var listeners = _objectSpread({}, this.$listeners);
+      var listeners = _objectSpread2({}, this.$listeners);
 
       delete listeners.change;
       return listeners;
@@ -357,7 +372,7 @@ function createInjector(context) {
   };
 }
 
-var HEAD = document.head || document.getElementsByTagName('head')[0];
+var HEAD;
 var styles = {};
 
 function addStyle(id, css) {
@@ -383,6 +398,11 @@ function addStyle(id, css) {
       style.element = document.createElement('style');
       style.element.type = 'text/css';
       if (css.media) style.element.setAttribute('media', css.media);
+
+      if (HEAD === undefined) {
+        HEAD = document.head || document.getElementsByTagName('head')[0];
+      }
+
       HEAD.appendChild(style.element);
     }
 
@@ -468,8 +488,8 @@ var __vue_staticRenderFns__ = [];
 
 var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-016ae424_0", {
-    source: ".number-input[data-v-016ae424]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-016ae424]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-016ae424]:focus{outline:0}.number-input__button[data-v-016ae424]:hover::after,.number-input__button[data-v-016ae424]:hover::before{background-color:#0074d9}.number-input__button[data-v-016ae424]:disabled{opacity:.65}.number-input__button[data-v-016ae424]:disabled::after,.number-input__button[data-v-016ae424]:disabled::before{background-color:#ddd}.number-input__button[data-v-016ae424]::after,.number-input__button[data-v-016ae424]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-016ae424]::before{height:1px;width:50%}.number-input__button[data-v-016ae424]::after{height:50%;width:1px}.number-input__button--minus[data-v-016ae424]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-016ae424]::after{visibility:hidden}.number-input__button--plus[data-v-016ae424]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-016ae424]{background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-016ae424]::-webkit-inner-spin-button,.number-input__input[data-v-016ae424]::-webkit-outer-spin-button{-webkit-appearance:none}.number-input__input[data-v-016ae424]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-016ae424]:disabled,.number-input__input[readonly][data-v-016ae424]{background-color:#f8f8f8}.number-input--inline[data-v-016ae424]{display:inline-block}.number-input--inline>input[data-v-016ae424]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-016ae424]{text-align:center}.number-input--controls>input[data-v-016ae424]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-016ae424]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-016ae424]{width:10rem}.number-input--small.number-input--controls>button[data-v-016ae424]{width:2rem}.number-input--small.number-input--controls>input[data-v-016ae424]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-016ae424]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-016ae424]{width:15rem}.number-input--large.number-input--controls>button[data-v-016ae424]{width:3rem}.number-input--large.number-input--controls>input[data-v-016ae424]{padding-left:4rem;padding-right:4rem}",
+  inject("data-v-058c2834_0", {
+    source: ".number-input[data-v-058c2834]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-058c2834]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-058c2834]:focus{outline:0}.number-input__button[data-v-058c2834]:hover::after,.number-input__button[data-v-058c2834]:hover::before{background-color:#0074d9}.number-input__button[data-v-058c2834]:disabled{opacity:.65}.number-input__button[data-v-058c2834]:disabled::after,.number-input__button[data-v-058c2834]:disabled::before{background-color:#ddd}.number-input__button[data-v-058c2834]::after,.number-input__button[data-v-058c2834]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-058c2834]::before{height:1px;width:50%}.number-input__button[data-v-058c2834]::after{height:50%;width:1px}.number-input__button--minus[data-v-058c2834]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-058c2834]::after{visibility:hidden}.number-input__button--plus[data-v-058c2834]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-058c2834]{-moz-appearance:textfield;background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-058c2834]::-webkit-inner-spin-button,.number-input__input[data-v-058c2834]::-webkit-outer-spin-button{-webkit-appearance:none}.number-input__input[data-v-058c2834]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-058c2834]:disabled,.number-input__input[readonly][data-v-058c2834]{background-color:#f8f8f8}.number-input--inline[data-v-058c2834]{display:inline-block}.number-input--inline>input[data-v-058c2834]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-058c2834]{text-align:center}.number-input--controls>input[data-v-058c2834]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-058c2834]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-058c2834]{width:10rem}.number-input--small.number-input--controls>button[data-v-058c2834]{width:2rem}.number-input--small.number-input--controls>input[data-v-058c2834]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-058c2834]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-058c2834]{width:15rem}.number-input--large.number-input--controls>button[data-v-058c2834]{width:3rem}.number-input--large.number-input--controls>input[data-v-058c2834]{padding-left:4rem;padding-right:4rem}",
     map: undefined,
     media: undefined
   });
@@ -477,7 +497,7 @@ var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
 /* scoped */
 
 
-var __vue_scope_id__ = "data-v-016ae424";
+var __vue_scope_id__ = "data-v-058c2834";
 /* module identifier */
 
 var __vue_module_identifier__ = undefined;
