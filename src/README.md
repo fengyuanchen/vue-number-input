@@ -110,10 +110,19 @@ The input is not inputtable, but still allow to change the value by controls.
 </template>
 ```
 
+## Customize attributes for the input element
+
+```html
+<template>
+  <number-input :value="0" :attrs="{ id: 'my-number-input', tabindex: -1 }" inline controls></number-input>
+</template>
+```
+
 ## Props
 
 | Name | Type | Default | Options | Description |
 | --- | --- | --- | --- | --- |
+| attrs | `Object` | - | - | Specify attributes for the built-in input element. |
 | center | `Boolean` | `false` | - | Indicate if the number is center or not. |
 | controls | `Boolean` | `false` | - | Indicate if the controls is visible or not. |
 | disabled | `Boolean` | `false` | - | Indicate if the component is disabled or not. |

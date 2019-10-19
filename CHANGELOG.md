@@ -1,8 +1,12 @@
 # Changelog
 
+## next
+
+- Add a new prop: `attrs` (#18).
+
 ## 1.1.2 (Oct 2, 2019)
 
-- Hide the spin box in number input box in Firefox (#17).
+- Hide the spin box in the number input box in Firefox (#17).
 
 ## 1.1.1 (Mar 9, 2019)
 

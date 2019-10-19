@@ -19,6 +19,7 @@
     <input
       ref="input"
       class="number-input__input"
+      v-bind="attrs"
       type="number"
       :name="name"
       :value="currentValue"
@@ -58,6 +59,11 @@ export default {
   },
 
   props: {
+    attrs: {
+      type: Object,
+      default: undefined,
+    },
+
     center: Boolean,
     controls: Boolean,
     disabled: Boolean,
