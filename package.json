@@ -1,6 +1,6 @@
 {
   "name": "@chenfengyuan/vue-number-input",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Number input component for Vue.js.",
   "main": "dist/vue-number-input.common.js",
   "module": "dist/vue-number-input.esm.js",
@@ -12,14 +12,14 @@
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
     "build:docs": "webpack --mode production",
-    "clean": "del-cli dist",
+    "clear": "del-cli dist docs",
     "codecov": "cat coverage/lcov.info | codecov",
     "compress": "uglifyjs dist/vue-number-input.min.js -o dist/vue-number-input.min.js -c -m --comments /^!/",
     "dev": "webpack-dev-server --mode development --host 0.0.0.0 --useLocalIp --hot --open --overlay",
     "lint": "npm run lint:js && npm run lint:css",
-    "lint:css": "stylelint **/src/**/*.{css,vue,html,vue,md} --fix",
-    "lint:js": "eslint src test *.js --ext .js,.vue --fix",
-    "prebuild": "npm run clean",
+    "lint:css": "stylelint {src,site}/**/*.{css,html,vue,md} --fix",
+    "lint:js": "eslint src site test *.js --ext .js,.vue --fix",
+    "prebuild": "npm run clear",
     "release": "npm run lint && npm run build && npm run compress && npm run build:docs && npm test",
     "start": "npm run dev",
     "test": "karma start"
@@ -49,8 +49,8 @@
   },
   "homepage": "https://fengyuanchen.github.io/vue-number-input",
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "babel-loader": "^8.0.6",
@@ -67,38 +67,38 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-vue": "^5.2.3",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^3.0.8",
-    "karma": "^4.3.0",
+    "husky": "^3.0.9",
+    "karma": "^4.4.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^2.1.0",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.5",
     "karma-webpack": "^4.0.2",
-    "lint-staged": "^8.2.1",
-    "markdown-to-vue-loader": "^1.0.1",
-    "mocha": "^6.2.1",
+    "lint-staged": "^9.4.2",
+    "markdown-to-vue-loader": "^2.0.0-beta.1",
+    "mocha": "^6.2.2",
     "node-sass": "^4.12.0",
     "puppeteer": "^1.20.0",
-    "rollup": "^1.22.0",
+    "rollup": "^1.25.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-vue": "^5.0.1",
     "sass-loader": "^8.0.0",
-    "stylelint": "^11.0.0",
+    "stylelint": "^11.1.1",
     "stylelint-config-recommended-scss": "^4.0.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-order": "^3.1.1",
     "stylelint-scss": "^3.11.1",
-    "uglify-js": "^3.6.0",
+    "uglify-js": "^3.6.2",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.41.0",
+    "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1"
+    "webpack-dev-server": "^3.8.2"
   },
   "peerDependencies": {
     "vue": "^2.6.0"
@@ -123,18 +123,13 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "*.js": [
-        "eslint --fix",
-        "git add"
-      ],
-      "*.{css,vue,html,vue,md}": [
-        "stylelint --fix",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "{dist,docs}/**"
+    "{src,site,test}/**/*.js|*.conf*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "{src,site}/**/*.{css,html,vue,md}": [
+      "stylelint --fix",
+      "git add"
     ]
   }
 }
