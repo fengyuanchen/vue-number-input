@@ -114,8 +114,8 @@
 </template>
 
 <script>
-import pkg from '../../package.json';
-import Readme from '../../src/README.md';
+import pkg from '../package.json';
+import Readme from '../src/README.md';
 
 // eslint-disable-next-line
 pkg.name = pkg.name.split('/').reverse()[0]
