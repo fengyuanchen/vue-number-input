@@ -1,5 +1,9 @@
 # Changelog
 
+## next
+
+- Add `tabindex="-1"` attribute to control buttons (#20).
+
 ## 1.2.0 (Oct 19, 2019)
 
 - Add a new prop: `attrs` (#18).

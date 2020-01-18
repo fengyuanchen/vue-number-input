@@ -13,6 +13,7 @@
       v-if="controls"
       class="number-input__button number-input__button--minus"
       type="button"
+      tabindex="-1"
       :disabled="disabled || readonly || !decreasable"
       @click="decrease"
     />
@@ -37,6 +38,7 @@
       v-if="controls"
       class="number-input__button number-input__button--plus"
       type="button"
+      tabindex="-1"
       :disabled="disabled || readonly || !increasable"
       @click="increase"
     />
