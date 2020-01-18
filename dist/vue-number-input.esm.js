@@ -1,11 +1,11 @@
 /*!
- * vue-number-input v1.2.0
+ * vue-number-input v1.2.1
  * https://fengyuanchen.github.io/vue-number-input
  *
  * Copyright 2018-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2019-10-19T10:01:39.455Z
+ * Date: 2020-01-18T05:53:39.315Z
  */
 
 function _defineProperty(obj, key, value) {
@@ -42,13 +42,13 @@ function _objectSpread2(target) {
     var source = arguments[i] != null ? arguments[i] : {};
 
     if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
+      ownKeys(Object(source), true).forEach(function (key) {
         _defineProperty(target, key, source[key]);
       });
     } else if (Object.getOwnPropertyDescriptors) {
       Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
     } else {
-      ownKeys(source).forEach(function (key) {
+      ownKeys(Object(source)).forEach(function (key) {
         Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
       });
     }
@@ -57,6 +57,8 @@ function _objectSpread2(target) {
   return target;
 }
 
+//
+//
 //
 //
 //
@@ -339,8 +341,8 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 
     options._ssrRegister = hook;
   } else if (style) {
-    hook = shadowMode ? function () {
-      style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+    hook = shadowMode ? function (context) {
+      style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
     } : function (context) {
       style.call(this, createInjector(context));
     };
@@ -364,8 +366,6 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 
   return script;
 }
-
-var normalizeComponent_1 = normalizeComponent;
 
 var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
 
@@ -422,8 +422,6 @@ function addStyle(id, css) {
   }
 }
 
-var browser = createInjector;
-
 /* script */
 var __vue_script__ = script;
 /* template */
@@ -448,6 +446,7 @@ var __vue_render__ = function __vue_render__() {
     staticClass: "number-input__button number-input__button--minus",
     attrs: {
       "type": "button",
+      "tabindex": "-1",
       "disabled": _vm.disabled || _vm.readonly || !_vm.decreasable
     },
     on: {
@@ -478,6 +477,7 @@ var __vue_render__ = function __vue_render__() {
     staticClass: "number-input__button number-input__button--plus",
     attrs: {
       "type": "button",
+      "tabindex": "-1",
       "disabled": _vm.disabled || _vm.readonly || !_vm.increasable
     },
     on: {
@@ -491,8 +491,8 @@ var __vue_staticRenderFns__ = [];
 
 var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-b6f730e2_0", {
-    source: ".number-input[data-v-b6f730e2]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-b6f730e2]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-b6f730e2]:focus{outline:0}.number-input__button[data-v-b6f730e2]:hover::after,.number-input__button[data-v-b6f730e2]:hover::before{background-color:#0074d9}.number-input__button[data-v-b6f730e2]:disabled{opacity:.65}.number-input__button[data-v-b6f730e2]:disabled::after,.number-input__button[data-v-b6f730e2]:disabled::before{background-color:#ddd}.number-input__button[data-v-b6f730e2]::after,.number-input__button[data-v-b6f730e2]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-b6f730e2]::before{height:1px;width:50%}.number-input__button[data-v-b6f730e2]::after{height:50%;width:1px}.number-input__button--minus[data-v-b6f730e2]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-b6f730e2]::after{visibility:hidden}.number-input__button--plus[data-v-b6f730e2]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-b6f730e2]{-moz-appearance:textfield;background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-b6f730e2]::-webkit-inner-spin-button,.number-input__input[data-v-b6f730e2]::-webkit-outer-spin-button{-webkit-appearance:none}.number-input__input[data-v-b6f730e2]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-b6f730e2]:disabled,.number-input__input[readonly][data-v-b6f730e2]{background-color:#f8f8f8}.number-input--inline[data-v-b6f730e2]{display:inline-block}.number-input--inline>input[data-v-b6f730e2]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-b6f730e2]{text-align:center}.number-input--controls>input[data-v-b6f730e2]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-b6f730e2]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-b6f730e2]{width:10rem}.number-input--small.number-input--controls>button[data-v-b6f730e2]{width:2rem}.number-input--small.number-input--controls>input[data-v-b6f730e2]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-b6f730e2]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-b6f730e2]{width:15rem}.number-input--large.number-input--controls>button[data-v-b6f730e2]{width:3rem}.number-input--large.number-input--controls>input[data-v-b6f730e2]{padding-left:4rem;padding-right:4rem}",
+  inject("data-v-3580ff4f_0", {
+    source: ".number-input[data-v-3580ff4f]{display:block;font-size:0;max-width:100%;overflow:hidden;position:relative}.number-input__button[data-v-3580ff4f]{background-color:#fff;border:0;border-radius:.25rem;bottom:1px;position:absolute;top:1px;width:2.5rem;z-index:1}.number-input__button[data-v-3580ff4f]:focus{outline:0}.number-input__button[data-v-3580ff4f]:hover::after,.number-input__button[data-v-3580ff4f]:hover::before{background-color:#0074d9}.number-input__button[data-v-3580ff4f]:disabled{opacity:.65}.number-input__button[data-v-3580ff4f]:disabled::after,.number-input__button[data-v-3580ff4f]:disabled::before{background-color:#ddd}.number-input__button[data-v-3580ff4f]::after,.number-input__button[data-v-3580ff4f]::before{background-color:#111;content:\"\";left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);transition:background-color .15s}.number-input__button[data-v-3580ff4f]::before{height:1px;width:50%}.number-input__button[data-v-3580ff4f]::after{height:50%;width:1px}.number-input__button--minus[data-v-3580ff4f]{border-bottom-right-radius:0;border-right:1px solid #ddd;border-top-right-radius:0;left:1px}.number-input__button--minus[data-v-3580ff4f]::after{visibility:hidden}.number-input__button--plus[data-v-3580ff4f]{border-bottom-left-radius:0;border-left:1px solid #ddd;border-top-left-radius:0;right:1px}.number-input__input[data-v-3580ff4f]{-moz-appearance:textfield;background-color:#fff;border:1px solid #ddd;border-radius:.25rem;display:block;font-size:1rem;line-height:1.5;max-width:100%;min-height:1.5rem;min-width:3rem;padding:.4375rem .875rem;transition:border-color .15s;width:100%}.number-input__input[data-v-3580ff4f]::-webkit-inner-spin-button,.number-input__input[data-v-3580ff4f]::-webkit-outer-spin-button{-webkit-appearance:none}.number-input__input[data-v-3580ff4f]:focus{border-color:#0074d9;outline:0}.number-input__input[data-v-3580ff4f]:disabled,.number-input__input[readonly][data-v-3580ff4f]{background-color:#f8f8f8}.number-input--inline[data-v-3580ff4f]{display:inline-block}.number-input--inline>input[data-v-3580ff4f]{display:inline-block;width:12.5rem}.number-input--center>input[data-v-3580ff4f]{text-align:center}.number-input--controls>input[data-v-3580ff4f]{padding-left:3.375rem;padding-right:3.375rem}.number-input--small>input[data-v-3580ff4f]{border-radius:.1875rem;font-size:.875rem;padding:.25rem .5rem}.number-input--small.number-input--inline>input[data-v-3580ff4f]{width:10rem}.number-input--small.number-input--controls>button[data-v-3580ff4f]{width:2rem}.number-input--small.number-input--controls>input[data-v-3580ff4f]{padding-left:2.5rem;padding-right:2.5rem}.number-input--large>input[data-v-3580ff4f]{border-radius:.3125rem;font-size:1.25rem;padding:.5rem 1rem}.number-input--large.number-input--inline>input[data-v-3580ff4f]{width:15rem}.number-input--large.number-input--controls>button[data-v-3580ff4f]{width:3rem}.number-input--large.number-input--controls>input[data-v-3580ff4f]{padding-left:4rem;padding-right:4rem}",
     map: undefined,
     media: undefined
   });
@@ -500,7 +500,7 @@ var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
 /* scoped */
 
 
-var __vue_scope_id__ = "data-v-b6f730e2";
+var __vue_scope_id__ = "data-v-3580ff4f";
 /* module identifier */
 
 var __vue_module_identifier__ = undefined;
@@ -509,17 +509,19 @@ var __vue_module_identifier__ = undefined;
 var __vue_is_functional_template__ = false;
 /* style inject SSR */
 
-var NumberInput = normalizeComponent_1({
+/* style inject shadow dom */
+
+var __vue_component__ = normalizeComponent({
   render: __vue_render__,
   staticRenderFns: __vue_staticRenderFns__
-}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, browser, undefined);
+}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, createInjector, undefined, undefined);
 
-NumberInput.install = function (Vue) {
-  Vue.component(NumberInput.name, NumberInput);
+__vue_component__.install = function (Vue) {
+  Vue.component(__vue_component__.name, __vue_component__);
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(NumberInput);
+  window.Vue.use(__vue_component__);
 }
 
-export default NumberInput;
+export default __vue_component__;

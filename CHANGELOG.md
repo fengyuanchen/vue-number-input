@@ -1,6 +1,6 @@
 # Changelog
 
-## next
+## 1.2.1 (Jan 18, 2020)
 
 - Add `tabindex="-1"` attribute to control buttons (#20).
 
