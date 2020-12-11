@@ -1,11 +1,17 @@
 <template>
-  <div class="demo">
+  <div class="demo-block">
     <slot />
   </div>
 </template>
 
+<script>
+export default {
+  name: 'DemoBlock',
+};
+</script>
+
 <style lang="scss">
-  .demo {
+  .demo-block {
     border: 1px solid #eee;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;

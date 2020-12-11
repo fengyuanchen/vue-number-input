@@ -11,8 +11,8 @@
         <button
           class="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbar-collapse"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar-collapse"
           aria-controls="navbar-collapse"
           aria-expanded="false"
           aria-label="Toggle navigation"
@@ -57,7 +57,7 @@
       </nav>
     </header>
     <main>
-      <div class="jumbotron bg-primary text-white rounded-0">
+      <div class="bg-primary text-white py-5">
         <div class="container">
           <div class="row">
             <div class="col-md">
@@ -118,7 +118,7 @@ import pkg from '../package.json';
 import Readme from '../src/README.md';
 
 // eslint-disable-next-line
-pkg.name = pkg.name.split('/').reverse()[0]
+pkg.name = pkg.name.split('/').reverse()[0];
 
 export default {
   components: {

@@ -17,9 +17,9 @@
   },
   "overrides": [
     {
-      "files": ["test/**/*.js"],
+      "files": ["tests/**/*.js"],
       "env": {
-        "mocha": true
+        "jest": true
       },
       "globals": {
         "Vue": true,

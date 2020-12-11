@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/fengyuanchen/vue-number-input.svg)](https://travis-ci.org/fengyuanchen/vue-number-input) [![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/vue-number-input.svg)](https://codecov.io/gh/fengyuanchen/vue-number-input) [![Downloads](https://img.shields.io/npm/dm/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input) [![Version](https://img.shields.io/npm/v/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input)
 
-> Number input component for [Vue.js](https://vuejs.org/).
+> Number input component for Vue 3.
 
 - [Docs](src/README.md)
 - [Demo](https://fengyuanchen.github.io/vue-number-input)
@@ -38,25 +38,25 @@ In browser:
 import Vue from 'vue';
 import VueNumberInput from '@chenfengyuan/vue-number-input';
 
-Vue.use(VueNumberInput);
-// Or
-Vue.component(VueNumberInput.name, VueNumberInput);
-// Or
-Vue.component('vue-number-input', VueNumberInput);
+const app = Vue.createApp({});
+
+// Use the component as a plugin
+app.use(VueNumberInput);
+
+// Or register component manually
+app.component(VueNumberInput.name, VueNumberInput);
+
+// Or customize component name
+app.component('my-number-input', VueNumberInput);
 ```
 
 ```html
-<number-input controls></number-input>
+<vue-number-input controls></vue-number-input>
 ```
 
 ## Browser support
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Opera (latest)
-- Edge (latest)
-- Internet Explorer 9+
+Same as Vue 3.
 
 ## Versioning
 

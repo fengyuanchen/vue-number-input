@@ -1,17 +1,16 @@
 <template>
   <div
-    class="number-input"
+    class="vue-number-input"
     :class="{
-      'number-input--inline': inline,
-      'number-input--center': center,
-      'number-input--controls': controls,
-      [`number-input--${size}`]: size,
+      'vue-number-input--inline': inline,
+      'vue-number-input--center': center,
+      'vue-number-input--controls': controls,
+      [`vue-number-input--${size}`]: size,
     }"
-    v-on="listeners"
   >
     <button
       v-if="controls"
-      class="number-input__button number-input__button--minus"
+      class="vue-number-input__button vue-number-input__button--minus"
       type="button"
       tabindex="-1"
       :disabled="disabled || readonly || !decreasable"
@@ -19,11 +18,11 @@
     />
     <input
       ref="input"
-      class="number-input__input"
+      class="vue-number-input__input"
       v-bind="attrs"
       type="number"
       :name="name"
-      :value="currentValue"
+      :value="value"
       :min="min"
       :max="max"
       :step="step"
@@ -36,7 +35,7 @@
     >
     <button
       v-if="controls"
-      class="number-input__button number-input__button--plus"
+      class="vue-number-input__button vue-number-input__button--plus"
       type="button"
       tabindex="-1"
       :disabled="disabled || readonly || !increasable"
@@ -54,11 +53,7 @@ const normalizeDecimalNumber = (value, times = 100000000000) => (
 );
 
 export default {
-  name: 'NumberInput',
-
-  model: {
-    event: 'change',
-  },
+  name: 'VueNumberInput',
 
   props: {
     attrs: {
@@ -110,15 +105,19 @@ export default {
       default: 1,
     },
 
-    value: {
+    modelValue: {
       type: Number,
       default: NaN,
     },
   },
 
+  emit: [
+    'update:modelValue',
+  ],
+
   data() {
     return {
-      currentValue: NaN,
+      value: NaN,
     };
   },
 
@@ -128,9 +127,7 @@ export default {
      * @returns {boolean} Return `true` if it is decreasable, else `false`.
      */
     increasable() {
-      const num = this.currentValue;
-
-      return isNaN(num) || num < this.max;
+      return isNaN(this.value) || this.value < this.max;
     },
 
     /**
@@ -138,26 +135,12 @@ export default {
      * @returns {boolean} Return `true` if it is decreasable, else `false`.
      */
     decreasable() {
-      const num = this.currentValue;
-
-      return isNaN(num) || num > this.min;
-    },
-
-    /**
-     * Filter listeners
-     * @returns {Object} Return filtered listeners.
-     */
-    listeners() {
-      const listeners = { ...this.$listeners };
-
-      delete listeners.change;
-
-      return listeners;
+      return isNaN(this.value) || this.value > this.min;
     },
   },
 
   watch: {
-    value: {
+    modelValue: {
       immediate: true,
       handler(newValue, oldValue) {
         if (
@@ -165,7 +148,7 @@ export default {
           !(isNaN(newValue) && typeof oldValue === 'undefined')
 
           // Avoid infinite loop
-          && newValue !== this.currentValue
+          && newValue !== this.value
         ) {
           this.setValue(newValue);
         }
@@ -179,7 +162,7 @@ export default {
      * @param {string} value - The new value.
      */
     change(event) {
-      this.setValue(Math.min(this.max, Math.max(this.min, event.target.value)));
+      this.setValue(event.target.value);
     },
 
     /**
@@ -199,16 +182,13 @@ export default {
      */
     decrease() {
       if (this.decreasable) {
-        let { currentValue } = this;
+        let { value } = this;
 
-        if (isNaN(currentValue)) {
-          currentValue = 0;
+        if (isNaN(value)) {
+          value = 0;
         }
 
-        this.setValue(Math.min(this.max, Math.max(
-          this.min,
-          normalizeDecimalNumber(currentValue - this.step),
-        )));
+        this.setValue(normalizeDecimalNumber(value - this.step));
       }
     },
 
@@ -217,16 +197,13 @@ export default {
      */
     increase() {
       if (this.increasable) {
-        let { currentValue } = this;
+        let { value } = this;
 
-        if (isNaN(currentValue)) {
-          currentValue = 0;
+        if (isNaN(value)) {
+          value = 0;
         }
 
-        this.setValue(Math.min(this.max, Math.max(
-          this.min,
-          normalizeDecimalNumber(currentValue + this.step),
-        )));
+        this.setValue(normalizeDecimalNumber(value + this.step));
       }
     },
 
@@ -235,28 +212,28 @@ export default {
      * @param {number} value - The new value to set.
      */
     setValue(value) {
-      const oldValue = this.currentValue;
-      let newValue = this.rounded ? Math.round(value) : value;
+      const oldValue = this.value;
+      let newValue = this.rounded ? Math.round(value) : Number(value);
 
       if (this.min <= this.max) {
         newValue = Math.min(this.max, Math.max(this.min, newValue));
       }
 
-      this.currentValue = newValue;
+      this.value = newValue;
 
       if (newValue === oldValue) {
         // Force to override the number in the input box (#13).
         this.$refs.input.value = newValue;
       }
 
-      this.$emit('change', newValue, oldValue);
+      this.$emit('update:modelValue', newValue, oldValue);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  .number-input {
+  .vue-number-input {
     display: block;
     font-size: 0;
     max-width: 100%;
@@ -393,15 +370,15 @@ export default {
         padding: 0.25rem 0.5rem;
       }
 
-      &.number-input--inline > input {
+      &.vue-number-input--inline > input {
         width: 10rem;
       }
 
-      &.number-input--controls > button {
+      &.vue-number-input--controls > button {
         width: 2rem;
       }
 
-      &.number-input--controls > input {
+      &.vue-number-input--controls > input {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
       }
@@ -414,15 +391,15 @@ export default {
         padding: 0.5rem 1rem;
       }
 
-      &.number-input--inline > input {
+      &.vue-number-input--inline > input {
         width: 15rem;
       }
 
-      &.number-input--controls > button {
+      &.vue-number-input--controls > button {
         width: 3rem;
       }
 
-      &.number-input--controls > input {
+      &.vue-number-input--controls > input {
         padding-left: 4rem;
         padding-right: 4rem;
       }

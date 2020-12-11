@@ -1,8 +1,7 @@
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import changeCase from 'change-case';
-import commonjs from 'rollup-plugin-commonjs';
 import createBanner from 'create-banner';
-import nodeResolve from 'rollup-plugin-node-resolve';
+import postcss from 'rollup-plugin-postcss';
 import vue from 'rollup-plugin-vue';
 import pkg from './package.json';
 
@@ -44,6 +43,7 @@ export default {
       banner,
       file: `dist/${pkg.name}.common.js`,
       format: 'cjs',
+      exports: 'auto',
     },
     {
       banner,
@@ -53,14 +53,15 @@ export default {
   ],
   external: ['vue'],
   plugins: [
-    nodeResolve(),
-    commonjs(),
     vue({
-      template: {
-        isProduction: true,
-      },
+      preprocessStyles: true,
+    }),
+    postcss({
+      extensions: ['.css', '.scss'],
+      minimize: true,
     }),
     babel({
+      babelHelpers: 'bundled',
       extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.vue'],
     }),
   ],

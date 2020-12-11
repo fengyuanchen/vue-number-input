@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueLoaderPlugin = require('vue-loader/dist/plugin').default;
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './site',
@@ -10,23 +11,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: 'babel-loader',
       },
       {
         test: /\.scss$/,
         use: [
-          'vue-style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
         ],
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
       },
       {
         test: /\.md$/,
@@ -35,7 +34,7 @@ module.exports = {
           {
             loader: 'markdown-to-vue-loader',
             options: {
-              componentWrapper: '<demo></demo>',
+              componentWrapper: '<demo-block></demo-block>',
               tableClass: 'table',
               tableWrapper: '<div class="table-responsive"></div>',
             },
@@ -49,12 +48,18 @@ module.exports = {
       filename: 'index.html',
       template: './site/index.html',
     }),
+    new MiniCssExtractPlugin(),
     new VueLoaderPlugin(),
   ],
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.esm',
+      vue$: 'vue/dist/vue.esm-bundler',
     },
     extensions: ['.js', '.json', '.vue'],
+  },
+  devServer: {
+    hot: true,
+    open: true,
+    overlay: true,
   },
 };

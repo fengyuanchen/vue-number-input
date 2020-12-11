@@ -1,12 +1,10 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './app.vue';
-import Demo from './components/demo.vue';
+import DemoBlock from './components/demo-block.vue';
 import VueNumberInput from '../src';
 
-Vue.component('demo', Demo);
-Vue.component(VueNumberInput.name, VueNumberInput);
+const app = createApp(App);
 
-export default new Vue({
-  el: '#app',
-  render: (createElement) => createElement(App),
-});
+app.use(VueNumberInput);
+app.component(DemoBlock.name, DemoBlock);
+app.mount('#app');
