@@ -14,8 +14,7 @@ dist/
 ├── vue-number-input.js         (UMD, default)
 ├── vue-number-input.min.js     (UMD, compressed)
 ├── vue-number-input.esm.js     (ECMAScript Module)
-├── vue-number-input.esm.min.js (ECMAScript Module, compressed)
-└── vue-number-input.d.ts       (TypeScript Declaration File)
+└── vue-number-input.esm.min.js (ECMAScript Module, compressed)
 ```
 
 ## Getting started
@@ -30,7 +29,7 @@ In browser:
 
 ```html
 <script src="/path/to/vue.js"></script><!-- Vue.js is required -->
-<script src="/path/to/vue-number-input.js"></script><!-- Register automatically once loaded -->
+<script src="/path/to/vue-number-input.js"></script>
 ```
 
 ### Usage
