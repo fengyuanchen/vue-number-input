@@ -1,15 +1,12 @@
 module.exports = {
+  preset: 'ts-jest',
   collectCoverage: true,
-  coverageReporters: ['json', 'lcov', 'text', 'clover', 'html'],
-  moduleFileExtensions: [
-    'js',
-    'vue',
-  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['html', 'lcov', 'text'],
+  moduleFileExtensions: ['js', 'ts', 'vue'],
   transform: {
     '^.+\\.vue$': 'vue-jest',
     '^.+\\.js$': 'babel-jest',
   },
-  testMatch: [
-    '**/tests/*.spec.js',
-  ],
+  testMatch: ['**/tests/*.spec.ts'],
 };

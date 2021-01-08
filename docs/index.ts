@@ -5,6 +5,6 @@ import VueNumberInput from '../src';
 
 const app = createApp(App);
 
-app.use(VueNumberInput);
-app.component(DemoBlock.name, DemoBlock);
+app.component(VueNumberInput.name as string, VueNumberInput);
+app.component(DemoBlock.name as string, DemoBlock);
 app.mount('#app');

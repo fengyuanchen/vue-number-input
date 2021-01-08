@@ -9,9 +9,9 @@ describe('events', () => {
           VueNumberInput,
         },
         methods: {
-          onModelValueChange(newValue, oldValue) {
+          onModelValueChange(newValue: number, oldValue: number) {
             expect(newValue).toBe(1);
-            expect(oldValue).toBeNaN;
+            expect(oldValue).toBeNaN();
             done();
           },
         },
@@ -29,9 +29,9 @@ describe('events', () => {
           VueNumberInput,
         },
         methods: {
-          onChange(event) {
+          onChange(event: Event) {
             expect(event.type).toBe('change');
-            expect(event.target.value).toBe('1');
+            expect((event.target as HTMLInputElement).value).toBe('1');
             done();
           },
         },
@@ -47,9 +47,9 @@ describe('events', () => {
           VueNumberInput,
         },
         methods: {
-          onInput(event) {
+          onInput(event: Event) {
             expect(event.type).toBe('input');
-            expect(event.target.value).toBe('1');
+            expect((event.target as HTMLInputElement).value).toBe('1');
             done();
           },
         },

@@ -7,14 +7,15 @@
 - [Docs](src/README.md)
 - [Demo](https://fengyuanchen.github.io/vue-number-input)
 
-## Main
+## Main files
 
 ```text
 dist/
-├── vue-number-input.js        (UMD)
-├── vue-number-input.min.js    (UMD, compressed)
-├── vue-number-input.common.js (CommonJS, default)
-└── vue-number-input.esm.js    (ES Module)
+├── vue-number-input.js         (UMD, default)
+├── vue-number-input.min.js     (UMD, compressed)
+├── vue-number-input.esm.js     (ECMAScript Module)
+├── vue-number-input.esm.min.js (ECMAScript Module, compressed)
+└── vue-number-input.d.ts       (TypeScript Declaration File)
 ```
 
 ## Getting started
@@ -40,14 +41,7 @@ import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 const app = Vue.createApp({});
 
-// Use the component as a plugin
-app.use(VueNumberInput);
-
-// Or register component manually
 app.component(VueNumberInput.name, VueNumberInput);
-
-// Or customize component name
-app.component('my-number-input', VueNumberInput);
 ```
 
 ```html

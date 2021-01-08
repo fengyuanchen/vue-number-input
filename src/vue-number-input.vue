@@ -44,15 +44,17 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
+
 const isNaN = Number.isNaN || window.isNaN;
 const REGEXP_NUMBER = /^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?$/;
 const REGEXP_DECIMALS = /\.\d*(?:0|9){10}\d*$/;
-const normalizeDecimalNumber = (value, times = 100000000000) => (
-  REGEXP_DECIMALS.test(value) ? (Math.round(value * times) / times) : value
+const normalizeDecimalNumber = (value: number, times = 100000000000) => (
+  REGEXP_DECIMALS.test(String(value)) ? (Math.round(value * times) / times) : value
 );
 
-export default {
+export default defineComponent({
   name: 'VueNumberInput',
 
   props: {
@@ -111,7 +113,7 @@ export default {
     },
   },
 
-  emit: [
+  emits: [
     'update:modelValue',
   ],
 
@@ -126,7 +128,7 @@ export default {
      * Indicate if the value is increasable.
      * @returns {boolean} Return `true` if it is decreasable, else `false`.
      */
-    increasable() {
+    increasable(): boolean {
       return isNaN(this.value) || this.value < this.max;
     },
 
@@ -134,7 +136,7 @@ export default {
      * Indicate if the value is decreasable.
      * @returns {boolean} Return `true` if it is decreasable, else `false`.
      */
-    decreasable() {
+    decreasable(): boolean {
       return isNaN(this.value) || this.value > this.min;
     },
   },
@@ -161,7 +163,7 @@ export default {
      * Change event handler.
      * @param {string} value - The new value.
      */
-    change(event) {
+    change(event: any) {
       this.setValue(event.target.value);
     },
 
@@ -169,8 +171,8 @@ export default {
      * Paste event handler.
      * @param {Event} event - Event object.
      */
-    paste(event) {
-      const clipboardData = event.clipboardData || window.clipboardData;
+    paste(event: ClipboardEvent) {
+      const clipboardData = event.clipboardData || (window as any).clipboardData;
 
       if (clipboardData && !REGEXP_NUMBER.test(clipboardData.getData('text'))) {
         event.preventDefault();
@@ -211,7 +213,7 @@ export default {
      * Set new value and dispatch change event.
      * @param {number} value - The new value to set.
      */
-    setValue(value) {
+    setValue(value: number) {
       const oldValue = this.value;
       let newValue = this.rounded ? Math.round(value) : Number(value);
 
@@ -223,13 +225,13 @@ export default {
 
       if (newValue === oldValue) {
         // Force to override the number in the input box (#13).
-        this.$refs.input.value = newValue;
+        (this.$refs.input as HTMLInputElement).value = String(newValue);
       }
 
       this.$emit('update:modelValue', newValue, oldValue);
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

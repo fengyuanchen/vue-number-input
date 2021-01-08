@@ -21,7 +21,7 @@ describe('props', () => {
       expect(wrapper.props('attrs')).toEqual({
         tabindex: 0,
       });
-      expect(wrapper.get('.vue-number-input__input').element.tabIndex).toBe(0);
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).tabIndex).toBe(0);
     });
   });
 
@@ -76,7 +76,7 @@ describe('props', () => {
       expect(wrapper.vm.value).toBeNaN();
       wrapper.get('.vue-number-input__button--plus').trigger('click').then(() => {
         expect(wrapper.vm.value).toBe(1);
-        expect(wrapper.get('.vue-number-input__input').element.value).toBe('1');
+        expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('1');
         done();
       });
     });
@@ -91,7 +91,7 @@ describe('props', () => {
       expect(wrapper.vm.value).toBeNaN();
       wrapper.get('.vue-number-input__button--minus').trigger('click').then(() => {
         expect(wrapper.vm.value).toBe(-1);
-        expect(wrapper.get('.vue-number-input__input').element.value).toBe('-1');
+        expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('-1');
         done();
       });
     });
@@ -106,9 +106,9 @@ describe('props', () => {
       });
 
       expect(wrapper.props('disabled')).toBe(false);
-      expect(wrapper.get('.vue-number-input__input').element.disabled).toBe(false);
-      expect(wrapper.get('.vue-number-input__button--plus').element.disabled).toBe(false);
-      expect(wrapper.get('.vue-number-input__button--minus').element.disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__button--plus').element as HTMLButtonElement).disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__button--minus').element as HTMLButtonElement).disabled).toBe(false);
     });
 
     it('should by disabled', () => {
@@ -120,9 +120,9 @@ describe('props', () => {
       });
 
       expect(wrapper.props('disabled')).toBe(true);
-      expect(wrapper.get('.vue-number-input__input').element.disabled).toBe(true);
-      expect(wrapper.get('.vue-number-input__button--plus').element.disabled).toBe(true);
-      expect(wrapper.get('.vue-number-input__button--minus').element.disabled).toBe(true);
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).disabled).toBe(true);
+      expect((wrapper.get('.vue-number-input__button--plus').element as HTMLButtonElement).disabled).toBe(true);
+      expect((wrapper.get('.vue-number-input__button--minus').element as HTMLButtonElement).disabled).toBe(true);
     });
   });
 
@@ -155,9 +155,9 @@ describe('props', () => {
       });
 
       expect(wrapper.props('inputtable')).toBe(true);
-      expect(wrapper.get('.vue-number-input__input').element.readOnly).toBe(false);
-      expect(wrapper.get('.vue-number-input__button--plus').element.disabled).toBe(false);
-      expect(wrapper.get('.vue-number-input__button--minus').element.disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).readOnly).toBe(false);
+      expect((wrapper.get('.vue-number-input__button--plus').element as HTMLButtonElement).disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__button--minus').element as HTMLButtonElement).disabled).toBe(false);
     });
 
     it('should not be inputtable', () => {
@@ -169,9 +169,9 @@ describe('props', () => {
       });
 
       expect(wrapper.props('inputtable')).toBe(false);
-      expect(wrapper.get('.vue-number-input__input').element.readOnly).toBe(true);
-      expect(wrapper.get('.vue-number-input__button--plus').element.disabled).toBe(false);
-      expect(wrapper.get('.vue-number-input__button--minus').element.disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).readOnly).toBe(true);
+      expect((wrapper.get('.vue-number-input__button--plus').element as HTMLButtonElement).disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__button--minus').element as HTMLButtonElement).disabled).toBe(false);
     });
   });
 
@@ -180,7 +180,7 @@ describe('props', () => {
       const wrapper = mount(VueNumberInput);
 
       expect(wrapper.props('max')).toBe(Infinity);
-      expect(wrapper.get('.vue-number-input__input').element.max).toBe('Infinity');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).max).toBe('Infinity');
     });
 
     it('should be equal to the given value', () => {
@@ -191,7 +191,7 @@ describe('props', () => {
       });
 
       expect(wrapper.props('max')).toBe(10);
-      expect(wrapper.get('.vue-number-input__input').element.max).toBe('10');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).max).toBe('10');
     });
 
     it('should not be greater than the given maximum value', () => {
@@ -202,7 +202,7 @@ describe('props', () => {
         },
       });
 
-      expect(wrapper.get('.vue-number-input__input').element.value).toBe('10');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('10');
     });
 
     it('should fix the out of range value', () => {
@@ -211,10 +211,9 @@ describe('props', () => {
           max: 10,
         },
       });
-      const input = wrapper.get('.vue-number-input__input');
 
-      input.setValue('11').then(() => {
-        expect(input.element.value).toBe('10');
+      wrapper.get('.vue-number-input__input').setValue('11').then(() => {
+        expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('10');
       });
     });
   });
@@ -224,7 +223,7 @@ describe('props', () => {
       const wrapper = mount(VueNumberInput);
 
       expect(wrapper.props('min')).toBe(-Infinity);
-      expect(wrapper.get('.vue-number-input__input').element.min).toBe('-Infinity');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).min).toBe('-Infinity');
     });
 
     it('should be equal to the given value', () => {
@@ -235,7 +234,7 @@ describe('props', () => {
       });
 
       expect(wrapper.props('min')).toBe(-10);
-      expect(wrapper.get('.vue-number-input__input').element.min).toBe('-10');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).min).toBe('-10');
     });
 
     it('should not be less than the given minimum value', () => {
@@ -246,7 +245,7 @@ describe('props', () => {
         },
       });
 
-      expect(wrapper.get('.vue-number-input__input').element.value).toBe('-10');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('-10');
     });
 
     it('should fix the out of range value', () => {
@@ -255,10 +254,9 @@ describe('props', () => {
           min: -10,
         },
       });
-      const input = wrapper.get('.vue-number-input__input');
 
-      input.setValue('-11').then(() => {
-        expect(input.element.value).toBe('-10');
+      wrapper.get('.vue-number-input__input').setValue('-11').then(() => {
+        expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('-10');
       });
     });
   });
@@ -268,7 +266,7 @@ describe('props', () => {
       const wrapper = mount(VueNumberInput);
 
       expect(wrapper.props('name')).toBeUndefined();
-      expect(wrapper.get('.vue-number-input__input').element.name).toBe('');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).name).toBe('');
     });
 
     it('should be equal to the given value', () => {
@@ -279,7 +277,7 @@ describe('props', () => {
       });
 
       expect(wrapper.props('name')).toBe('digit');
-      expect(wrapper.get('.vue-number-input__input').element.name).toBe('digit');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).name).toBe('digit');
     });
   });
 
@@ -288,7 +286,7 @@ describe('props', () => {
       const wrapper = mount(VueNumberInput);
 
       expect(wrapper.props('placeholder')).toBeUndefined();
-      expect(wrapper.get('.vue-number-input__input').element.placeholder).toBe('');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).placeholder).toBe('');
     });
 
     it('should be equal to the given value', () => {
@@ -299,7 +297,7 @@ describe('props', () => {
       });
 
       expect(wrapper.props('placeholder')).toBe('Number input');
-      expect(wrapper.get('.vue-number-input__input').element.placeholder).toBe('Number input');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).placeholder).toBe('Number input');
     });
   });
 
@@ -312,9 +310,9 @@ describe('props', () => {
       });
 
       expect(wrapper.props('readonly')).toBe(false);
-      expect(wrapper.get('.vue-number-input__input').element.readOnly).toBe(false);
-      expect(wrapper.get('.vue-number-input__button--plus').element.disabled).toBe(false);
-      expect(wrapper.get('.vue-number-input__button--minus').element.disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).readOnly).toBe(false);
+      expect((wrapper.get('.vue-number-input__button--plus').element as HTMLButtonElement).disabled).toBe(false);
+      expect((wrapper.get('.vue-number-input__button--minus').element as HTMLButtonElement).disabled).toBe(false);
     });
 
     it('should be read-only', () => {
@@ -326,9 +324,9 @@ describe('props', () => {
       });
 
       expect(wrapper.props('readonly')).toBe(true);
-      expect(wrapper.get('.vue-number-input__input').element.readOnly).toBe(true);
-      expect(wrapper.get('.vue-number-input__button--plus').element.disabled).toBe(true);
-      expect(wrapper.get('.vue-number-input__button--minus').element.disabled).toBe(true);
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).readOnly).toBe(true);
+      expect((wrapper.get('.vue-number-input__button--plus').element as HTMLButtonElement).disabled).toBe(true);
+      expect((wrapper.get('.vue-number-input__button--minus').element as HTMLButtonElement).disabled).toBe(true);
     });
   });
 
@@ -341,7 +339,7 @@ describe('props', () => {
       });
 
       expect(wrapper.props('rounded')).toBe(false);
-      expect(wrapper.get('.vue-number-input__input').element.value).toBe('1.5');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('1.5');
     });
 
     it('should round the number', () => {
@@ -353,7 +351,7 @@ describe('props', () => {
       });
 
       expect(wrapper.props('rounded')).toBe(true);
-      expect(wrapper.get('.vue-number-input__input').element.value).toBe('2');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('2');
     });
   });
 
@@ -391,7 +389,7 @@ describe('props', () => {
 
       expect(wrapper.props('step')).toBe(1);
       wrapper.get('.vue-number-input__button--plus').trigger('click').then(() => {
-        expect(wrapper.get('.vue-number-input__input').element.step).toBe('1');
+        expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).step).toBe('1');
         done();
       });
     });
@@ -406,7 +404,7 @@ describe('props', () => {
 
       expect(wrapper.props('step')).toBe(2);
       wrapper.get('.vue-number-input__button--plus').trigger('click').then(() => {
-        expect(wrapper.get('.vue-number-input__input').element.step).toBe('2');
+        expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).step).toBe('2');
         done();
       });
     });
@@ -417,7 +415,7 @@ describe('props', () => {
       const wrapper = mount(VueNumberInput);
 
       expect(wrapper.props('modelValue')).toBeNaN();
-      expect(wrapper.get('.vue-number-input__input').element.value).toBe('');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('');
     });
 
     it('should be equal to the given value', () => {
@@ -428,7 +426,7 @@ describe('props', () => {
       });
 
       expect(wrapper.props('modelValue')).toBe(10);
-      expect(wrapper.get('.vue-number-input__input').element.value).toBe('10');
+      expect((wrapper.get('.vue-number-input__input').element as HTMLInputElement).value).toBe('10');
     });
   });
 });

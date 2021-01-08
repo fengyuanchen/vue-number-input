@@ -52,7 +52,7 @@ describe('events', () => {
     it('should change the value', () => {
       const wrapper = mount(VueNumberInput);
 
-      expect(wrapper.vm.value).toBeNaN;
+      expect(wrapper.vm.value).toBeNaN();
       wrapper.vm.setValue(1);
       expect(wrapper.vm.value).toBe(1);
     });
@@ -64,7 +64,7 @@ describe('events', () => {
         },
       });
 
-      expect(wrapper.vm.value).toBeNaN;
+      expect(wrapper.vm.value).toBeNaN();
       wrapper.vm.setValue(-1);
       expect(wrapper.vm.value).toBe(0);
     });
@@ -76,7 +76,7 @@ describe('events', () => {
         },
       });
 
-      expect(wrapper.vm.value).toBeNaN;
+      expect(wrapper.vm.value).toBeNaN();
       wrapper.vm.setValue(1);
       expect(wrapper.vm.value).toBe(0);
     });
@@ -89,7 +89,7 @@ describe('events', () => {
         },
       });
 
-      expect(wrapper.vm.value).toBeNaN;
+      expect(wrapper.vm.value).toBeNaN();
       wrapper.vm.setValue(1);
       expect(wrapper.vm.value).toBe(1);
     });

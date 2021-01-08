@@ -1,58 +1,50 @@
-import babel from '@rollup/plugin-babel';
-import changeCase from 'change-case';
 import createBanner from 'create-banner';
 import postcss from 'rollup-plugin-postcss';
+import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
+import { pascalCase } from 'change-case';
+import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
-pkg.name = pkg.name.replace(/^.+\//, '');
-
-const name = changeCase.pascalCase(pkg.name);
+const name = pascalCase(pkg.name.replace(/^.+\//, ''));
 const data = {
   year: '2018-present',
 };
 const banner = createBanner({
   data,
+  template: 'inline',
 });
-const globals = {
-  vue: 'Vue',
-};
 
-export default {
-  input: 'src/index.js',
-  output: [
-    {
+export default ['umd', 'esm'].map((format) => ({
+  input: 'src/index.ts',
+  output: ['development', 'production'].map((mode) => {
+    const output = {
       banner,
-      globals,
+      format,
       name,
-      file: `dist/${pkg.name}.js`,
-      format: 'umd',
-    },
-    {
-      globals,
-      name,
-      banner: createBanner({
-        data,
-        template: 'inline',
-      }),
-      file: `dist/${pkg.name}.min.js`,
-      format: 'umd',
-      compact: true,
-    },
-    {
-      banner,
-      file: `dist/${pkg.name}.common.js`,
-      format: 'cjs',
-      exports: 'auto',
-    },
-    {
-      banner,
-      file: `dist/${pkg.name}.esm.js`,
-      format: 'esm',
-    },
-  ],
-  external: ['vue'],
+      file: pkg.main,
+      globals: {
+        vue: 'Vue',
+      },
+    };
+
+    if (format === 'esm') {
+      output.file = pkg.module;
+    }
+
+    if (mode === 'production') {
+      output.compact = true;
+      output.file = output.file.replace(/(\.js)$/, '.min$1');
+      output.plugins = [
+        terser(),
+      ];
+    }
+
+    return output;
+  }),
+  external: Object.keys(pkg.peerDependencies),
   plugins: [
+    typescript(),
     vue({
       preprocessStyles: true,
     }),
@@ -60,9 +52,5 @@ export default {
       extensions: ['.css', '.scss'],
       minimize: true,
     }),
-    babel({
-      babelHelpers: 'bundled',
-      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.vue'],
-    }),
   ],
-};
+}));

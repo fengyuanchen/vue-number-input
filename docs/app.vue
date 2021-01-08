@@ -27,20 +27,14 @@
           <nav class="nav navbar-nav">
             <a
               class="nav-link"
-              href="//github.com/fengyuanchen/vue-number-input"
+              href="https://github.com/fengyuanchen/vue-number-input"
               title="View the GitHub project"
             >
               GitHub
             </a>
             <a
               class="nav-link"
-              href="//github.com/fengyuanchen/vue-number-input/blob/master/LICENSE"
-            >
-              License
-            </a>
-            <a
-              class="nav-link"
-              href="//fengyuanchen.github.io"
+              href="https://fengyuanchen.github.io"
               title="Explore more projects"
             >
               Explore
@@ -91,13 +85,19 @@
         <nav class="nav flex-wrap justify-content-center mb-3">
           <a
             class="nav-link"
-            href="//github.com/fengyuanchen/vue-number-input"
+            href="https://github.com/fengyuanchen/vue-number-input"
           >
             GitHub
           </a>
           <a
             class="nav-link"
-            href="//github.com/fengyuanchen/vue-number-input/blob/master/LICENSE"
+            href="https://github.com/fengyuanchen/vue-number-input/blob/master/CHANGELOG.md"
+          >
+            Changelog
+          </a>
+          <a
+            class="nav-link"
+            href="https://github.com/fengyuanchen/vue-number-input/blob/master/LICENSE"
           >
             License
           </a>
@@ -113,14 +113,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import pkg from '../package.json';
 import Readme from '../src/README.md';
 
 // eslint-disable-next-line
-pkg.name = pkg.name.split('/').reverse()[0];
+pkg.name = pkg.name.split('/').pop() || '';
 
-export default {
+export default defineComponent({
   components: {
     Readme,
   },
@@ -135,9 +136,9 @@ export default {
     script.async = true;
     script.id = '_carbonads_js';
     script.src = '//cdn.carbonads.com/carbon.js?serve=CKYI55Q7&placement=fengyuanchengithubio';
-    this.$refs.carbonads.appendChild(script);
+    (this.$refs.carbonads as Element).appendChild(script);
   },
-};
+});
 </script>
 
 <style lang="scss">
