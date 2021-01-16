@@ -1,3 +1,7 @@
+# [2.0.0-beta](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-alpha...v2.0.0-beta) (2021-01-16)
+
+
+
 # [2.0.0-alpha](https://github.com/fengyuanchen/vue-number-input/compare/v1.2.1...v2.0.0-alpha) (2021-01-08)
 
 
