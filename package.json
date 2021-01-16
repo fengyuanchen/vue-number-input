@@ -14,18 +14,18 @@
     "build:docs": "webpack --env production",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "clear": "del-cli dist",
-    "codecov": "cat coverage/lcov.info | codecov",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint **/*.{css,scss,html,vue,md} --fix",
     "lint:js": "eslint . --ext .js,.ts,.vue --fix",
     "release": "npm run clear && npm run lint && npm run build && npm run build:docs && npm test && npm run changelog",
     "serve": "webpack serve --hot --open",
     "start": "npm run serve",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "cat coverage/lcov.info | codecov"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fengyuanchen/vue-number-input.git"
+    "url": "https://github.com/fengyuanchen/vue-number-input.git"
   },
   "keywords": [
     "number",
