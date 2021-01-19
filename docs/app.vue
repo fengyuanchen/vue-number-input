@@ -34,7 +34,7 @@
             </a>
             <a
               class="nav-link"
-              href="https://fengyuanchen.github.io"
+              href="https://fengyuanchen.github.io/"
               title="Explore more projects"
             >
               Explore

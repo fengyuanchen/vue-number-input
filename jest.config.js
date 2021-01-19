@@ -5,8 +5,8 @@ module.exports = {
   coverageReporters: ['html', 'lcov', 'text'],
   moduleFileExtensions: ['js', 'ts', 'vue'],
   transform: {
-    '^.+\\.vue$': 'vue-jest',
     '^.+\\.js$': 'babel-jest',
+    '^.+\\.vue$': 'vue-jest',
   },
   testMatch: ['**/tests/*.spec.ts'],
 };
