@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import VueNumberInput from '../src';
 
-describe('VueNumberInput', () => {
+describe('others', () => {
   it('should fix the `0.30000000000000004` problem', (done) => {
     const wrapper = mount({
       components: {

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import VueNumberInput from '../src';
 
-describe('events', () => {
+describe('methods', () => {
   describe('increase', () => {
     it('should increase the number', () => {
       const wrapper = mount(VueNumberInput);

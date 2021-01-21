@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import VueNumberInput from '../src';
 
-describe('events', () => {
+describe('Events', () => {
   describe('custom', () => {
     it('should trigger the custom `update:model-value` event', (done) => {
       const wrapper = mount({
