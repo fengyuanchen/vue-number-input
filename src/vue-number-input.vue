@@ -235,176 +235,176 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-  .vue-number-input {
-    display: block;
-    font-size: 0;
-    max-width: 100%;
-    overflow: hidden;
-    position: relative;
+.vue-number-input {
+  display: block;
+  font-size: 0;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
 
-    &__button {
-      background-color: #fff;
-      border: 0;
-      border-radius: 0.25rem;
-      bottom: 1px;
-      position: absolute;
-      top: 1px;
-      width: 2.5rem;
-      z-index: 1;
+  &__button {
+    background-color: #fff;
+    border: 0;
+    border-radius: 0.25rem;
+    bottom: 1px;
+    position: absolute;
+    top: 1px;
+    width: 2.5rem;
+    z-index: 1;
 
-      &:focus {
-        outline: none;
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      &::before,
+      &::after {
+        background-color: #0074d9;
       }
+    }
 
-      &:hover {
-        &::before,
-        &::after {
-          background-color: #0074d9;
-        }
-      }
-
-      &:disabled {
-        opacity: 0.65;
-
-        &::before,
-        &::after {
-          background-color: #ddd;
-        }
-      }
+    &:disabled {
+      opacity: 0.65;
 
       &::before,
       &::after {
-        background-color: #111;
-        content: "";
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        transition: background-color 0.15s;
+        background-color: #ddd;
       }
+    }
 
-      &::before {
-        height: 1px;
-        width: 50%;
-      }
+    &::before,
+    &::after {
+      background-color: #111;
+      content: "";
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.15s;
+    }
+
+    &::before {
+      height: 1px;
+      width: 50%;
+    }
+
+    &::after {
+      height: 50%;
+      width: 1px;
+    }
+
+    &--minus {
+      border-bottom-right-radius: 0;
+      border-right: 1px solid #ddd;
+      border-top-right-radius: 0;
+      left: 1px;
 
       &::after {
-        height: 50%;
-        width: 1px;
-      }
-
-      &--minus {
-        border-bottom-right-radius: 0;
-        border-right: 1px solid #ddd;
-        border-top-right-radius: 0;
-        left: 1px;
-
-        &::after {
-          visibility: hidden;
-        }
-      }
-
-      &--plus {
-        border-bottom-left-radius: 0;
-        border-left: 1px solid #ddd;
-        border-top-left-radius: 0;
-        right: 1px;
+        visibility: hidden;
       }
     }
 
-    &__input {
-      -moz-appearance: textfield;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 0.25rem;
-      display: block;
-      font-size: 1rem;
-      line-height: 1.5;
-      max-width: 100%;
-      min-height: 1.5rem;
-      min-width: 3rem;
-      padding: 0.4375rem 0.875rem;
-      transition: border-color 0.15s;
-      width: 100%;
-
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-      }
-
-      &:focus {
-        border-color: #0074d9;
-        outline: none;
-      }
-
-      &:disabled,
-      &[readonly] {
-        background-color: #f8f8f8;
-      }
-    }
-
-    &--inline {
-      display: inline-block;
-
-      & > input {
-        display: inline-block;
-        width: 12.5rem;
-      }
-    }
-
-    &--center {
-      & > input {
-        text-align: center;
-      }
-    }
-
-    &--controls {
-      & > input {
-        padding-left: 3.375rem;
-        padding-right: 3.375rem;
-      }
-    }
-
-    &--small {
-      & > input {
-        border-radius: 0.1875rem;
-        font-size: 0.875rem;
-        padding: 0.25rem 0.5rem;
-      }
-
-      &.vue-number-input--inline > input {
-        width: 10rem;
-      }
-
-      &.vue-number-input--controls > button {
-        width: 2rem;
-      }
-
-      &.vue-number-input--controls > input {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-      }
-    }
-
-    &--large {
-      & > input {
-        border-radius: 0.3125rem;
-        font-size: 1.25rem;
-        padding: 0.5rem 1rem;
-      }
-
-      &.vue-number-input--inline > input {
-        width: 15rem;
-      }
-
-      &.vue-number-input--controls > button {
-        width: 3rem;
-      }
-
-      &.vue-number-input--controls > input {
-        padding-left: 4rem;
-        padding-right: 4rem;
-      }
+    &--plus {
+      border-bottom-left-radius: 0;
+      border-left: 1px solid #ddd;
+      border-top-left-radius: 0;
+      right: 1px;
     }
   }
+
+  &__input {
+    -moz-appearance: textfield;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 100%;
+    min-height: 1.5rem;
+    min-width: 3rem;
+    padding: 0.4375rem 0.875rem;
+    transition: border-color 0.15s;
+    width: 100%;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &:focus {
+      border-color: #0074d9;
+      outline: none;
+    }
+
+    &:disabled,
+    &[readonly] {
+      background-color: #f8f8f8;
+    }
+  }
+
+  &--inline {
+    display: inline-block;
+
+    & > input {
+      display: inline-block;
+      width: 12.5rem;
+    }
+  }
+
+  &--center {
+    & > input {
+      text-align: center;
+    }
+  }
+
+  &--controls {
+    & > input {
+      padding-left: 3.375rem;
+      padding-right: 3.375rem;
+    }
+  }
+
+  &--small {
+    & > input {
+      border-radius: 0.1875rem;
+      font-size: 0.875rem;
+      padding: 0.25rem 0.5rem;
+    }
+
+    &.vue-number-input--inline > input {
+      width: 10rem;
+    }
+
+    &.vue-number-input--controls > button {
+      width: 2rem;
+    }
+
+    &.vue-number-input--controls > input {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
+  &--large {
+    & > input {
+      border-radius: 0.3125rem;
+      font-size: 1.25rem;
+      padding: 0.5rem 1rem;
+    }
+
+    &.vue-number-input--inline > input {
+      width: 15rem;
+    }
+
+    &.vue-number-input--controls > button {
+      width: 3rem;
+    }
+
+    &.vue-number-input--controls > input {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+}
 </style>

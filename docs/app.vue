@@ -142,93 +142,93 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-  .markdown-body {
-    table {
-      display: table;
-    }
-
-    code {
-      white-space: nowrap;
-    }
+.markdown-body {
+  table {
+    display: table;
   }
 
-  .carbonads {
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    font-size: 0.875rem;
+  code {
+    white-space: nowrap;
+  }
+}
+
+.carbonads {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  overflow: hidden;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    float: right;
+    margin-bottom: -1rem;
+    margin-top: -1rem;
+    max-width: 360px;
+  }
+}
+
+.carbon {
+  &-wrap {
     overflow: hidden;
-    padding: 1rem;
-
-    @media (min-width: 768px) {
-      float: right;
-      margin-bottom: -1rem;
-      margin-top: -1rem;
-      max-width: 360px;
-    }
   }
 
-  .carbon {
-    &-wrap {
-      overflow: hidden;
-    }
-
-    &-img {
-      clear: left;
-      display: block;
-      float: left;
-    }
-
-    &-text,
-    &-poweredby {
-      display: block;
-      margin-left: 140px;
-
-      &,
-      &:focus,
-      &:hover {
-        color: #fff;
-        text-decoration: none;
-      }
-    }
-
-    &-poweredby {
-      color: #ddd;
-    }
-  }
-
-  .heart {
-    color: #ddd;
+  &-img {
+    clear: left;
     display: block;
-    height: 2rem;
-    line-height: 2rem;
-    margin-bottom: 0;
-    margin-top: 1rem;
-    position: relative;
-    text-align: center;
-    width: 100%;
+    float: left;
+  }
 
+  &-text,
+  &-poweredby {
+    display: block;
+    margin-left: 140px;
+
+    &,
+    &:focus,
     &:hover {
-      color: #ff4136;
-    }
-
-    &::before {
-      border-top: 1px solid #eee;
-      content: '';
-      display: block;
-      height: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 50%;
-    }
-
-    &::after {
-      background-color: #fff;
-      content: '♥';
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      position: relative;
-      z-index: 1;
+      color: #fff;
+      text-decoration: none;
     }
   }
+
+  &-poweredby {
+    color: #ddd;
+  }
+}
+
+.heart {
+  color: #ddd;
+  display: block;
+  height: 2rem;
+  line-height: 2rem;
+  margin-bottom: 0;
+  margin-top: 1rem;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    color: #ff4136;
+  }
+
+  &::before {
+    border-top: 1px solid #eee;
+    content: '';
+    display: block;
+    height: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+  }
+
+  &::after {
+    background-color: #fff;
+    content: '♥';
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+}
 </style>

@@ -11,13 +11,13 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        value: 1,
-      };
-    },
-  };
+export default {
+  data() {
+    return {
+      value: 1,
+    };
+  },
+};
 </script>
 ```
 
@@ -58,9 +58,9 @@
 </template>
 
 <style scoped>
-  .vue-number-input + .vue-number-input {
-    margin-left: 1rem;
-  }
+.vue-number-input + .vue-number-input {
+  margin-left: 1rem;
+}
 </style>
 ```
 
@@ -74,9 +74,9 @@
 </template>
 
 <style scoped>
-  .vue-number-input + .vue-number-input {
-    margin-left: 1rem;
-  }
+.vue-number-input + .vue-number-input {
+  margin-left: 1rem;
+}
 </style>
 ```
 
