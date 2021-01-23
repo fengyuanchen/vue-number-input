@@ -7,11 +7,10 @@ import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 const name = pascalCase(pkg.name.replace(/^.+\//, ''));
-const data = {
-  year: '2018-present',
-};
 const banner = createBanner({
-  data,
+  data: {
+    year: '2018-present',
+  },
   template: 'inline',
 });
 
