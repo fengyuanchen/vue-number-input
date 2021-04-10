@@ -217,12 +217,14 @@ export default defineComponent({
       const oldValue = this.value;
       let newValue = typeof value !== 'number' ? parseFloat(value) : value;
 
-      if (this.rounded) {
-        newValue = Math.round(value);
-      }
+      if (!isNaN(newValue)) {
+        if (this.min <= this.max) {
+          newValue = Math.min(this.max, Math.max(this.min, newValue));
+        }
 
-      if (this.min <= this.max) {
-        newValue = Math.min(this.max, Math.max(this.min, newValue));
+        if (this.rounded) {
+          newValue = Math.round(value);
+        }
       }
 
       this.value = newValue;
