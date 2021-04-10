@@ -35,10 +35,10 @@ In browser:
 ### Usage
 
 ```js
-import Vue from 'vue';
+import { createApp } from 'vue';
 import VueNumberInput from '@chenfengyuan/vue-number-input';
 
-const app = Vue.createApp({});
+const app = createApp({});
 
 app.component(VueNumberInput.name, VueNumberInput);
 ```
