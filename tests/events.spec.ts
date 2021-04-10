@@ -9,9 +9,8 @@ describe('events', () => {
           VueNumberInput,
         },
         methods: {
-          onModelValueChange(newValue: number, oldValue: number) {
+          onModelValueChange(newValue: number) {
             expect(newValue).toBe(1);
-            expect(oldValue).toBeNaN();
             done();
           },
         },

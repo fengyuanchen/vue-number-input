@@ -234,7 +234,7 @@ export default defineComponent({
         (this.$refs.input as HTMLInputElement).value = String(newValue);
       }
 
-      this.$emit('update:modelValue', newValue, oldValue);
+      this.$emit('update:modelValue', newValue);
     },
   },
 });
