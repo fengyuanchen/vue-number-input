@@ -215,7 +215,11 @@ export default defineComponent({
      */
     setValue(value: number) {
       const oldValue = this.value;
-      let newValue = this.rounded ? Math.round(value) : Number(value);
+      let newValue = typeof value !== 'number' ? parseFloat(value) : value;
+
+      if (this.rounded) {
+        newValue = Math.round(value);
+      }
 
       if (this.min <= this.max) {
         newValue = Math.min(this.max, Math.max(this.min, newValue));
