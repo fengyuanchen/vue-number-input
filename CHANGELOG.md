@@ -1,3 +1,22 @@
+# [2.0.0-rc](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-beta.1...v2.0.0-rc) (2021-06-12)
+
+
+
+# [2.0.0-beta.1](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-beta...v2.0.0-beta.1) (2021-04-10)
+
+
+### Bug Fixes
+
+* round the new value in the last setp ([c43a69f](https://github.com/fengyuanchen/vue-number-input/commit/c43a69f5b67c5e02fbd1eccb007c947aa5482f8e))
+* should emit a single value ([cb8bed9](https://github.com/fengyuanchen/vue-number-input/commit/cb8bed9b9470882588e8b281466cea088afc0009))
+
+
+### Features
+
+* support to clear the input value through the keyboard ([fd9faf2](https://github.com/fengyuanchen/vue-number-input/commit/fd9faf23737fb568426fbbe0d879c076cb6cf419)), closes [#28](https://github.com/fengyuanchen/vue-number-input/issues/28)
+
+
+
 # [2.0.0-beta](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-alpha...v2.0.0-beta) (2021-01-16)
 
 
