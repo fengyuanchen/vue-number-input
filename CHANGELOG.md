@@ -1,3 +1,18 @@
+# [2.0.0-rc.1](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-rc...v2.0.0-rc.1) (2022-01-08)
+
+
+### Bug Fixes
+
+* add `oldValue` to `update:modelValue` event ([4fa92f0](https://github.com/fengyuanchen/vue-number-input/commit/4fa92f03047ebe5dbc45a5e531575d1df081f20c))
+* avoid specifying `NaN` value to number input ([101abce](https://github.com/fengyuanchen/vue-number-input/commit/101abce5375f938fd06301877a84cb25c88df71c)), closes [#31](https://github.com/fengyuanchen/vue-number-input/issues/31)
+
+
+### Features
+
+* add auto-generated declaration file ([198e545](https://github.com/fengyuanchen/vue-number-input/commit/198e545bcffe0ab7f9e8f7b9ddaba6fdbd90935b))
+
+
+
 # [2.0.0-rc](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-beta.1...v2.0.0-rc) (2021-06-12)
 
 
