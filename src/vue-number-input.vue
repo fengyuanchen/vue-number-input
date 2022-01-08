@@ -22,7 +22,7 @@
       v-bind="attrs"
       type="number"
       :name="name"
-      :value="value"
+      :value="isNaN(value) ? '' : value"
       :min="min"
       :max="max"
       :step="step"
@@ -159,6 +159,8 @@ export default defineComponent({
   },
 
   methods: {
+    isNaN,
+
     /**
      * Change event handler.
      * @param {string} value - The new value.
