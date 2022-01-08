@@ -4,10 +4,9 @@
   "description": "Number input component for Vue 3.",
   "main": "dist/vue-number-input.js",
   "module": "dist/vue-number-input.esm.js",
-  "types": "types/index.d.ts",
+  "types": "dist/vue-number-input.d.ts",
   "files": [
-    "dist",
-    "types"
+    "dist"
   ],
   "scripts": {
     "build": "rollup -c --environment BUILD:production",

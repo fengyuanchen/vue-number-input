@@ -14,7 +14,8 @@ dist/
 ├── vue-number-input.js         (UMD, default)
 ├── vue-number-input.min.js     (UMD, compressed)
 ├── vue-number-input.esm.js     (ECMAScript Module)
-└── vue-number-input.esm.min.js (ECMAScript Module, compressed)
+├── vue-number-input.esm.min.js (ECMAScript Module, compressed)
+└── vue-number-input.d.ts       (TypeScript Declaration File)
 ```
 
 ## Getting started
