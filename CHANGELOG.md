@@ -1,3 +1,12 @@
+# [2.0.0-rc.2](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2022-01-22)
+
+
+### Bug Fixes
+
+* correct the declaration file name ([7f96219](https://github.com/fengyuanchen/vue-number-input/commit/7f96219dc88afa516244db39715b087bcb04dbcf))
+
+
+
 # [2.0.0-rc.1](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-rc...v2.0.0-rc.1) (2022-01-08)
 
 
@@ -9,7 +18,7 @@
 
 ### Features
 
-* add auto-generated declaration file ([198e545](https://github.com/fengyuanchen/vue-number-input/commit/198e545bcffe0ab7f9e8f7b9ddaba6fdbd90935b))
+* add auto-generated declaration file ([5ecd316](https://github.com/fengyuanchen/vue-number-input/commit/5ecd316699c3e60d0f7b6d591c0d3476e3f03cd2))
 
 
 
