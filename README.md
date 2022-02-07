@@ -1,8 +1,8 @@
 # vue-number-input
 
-[![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/vue-number-input.svg)](https://codecov.io/gh/fengyuanchen/vue-number-input) [![Downloads](https://img.shields.io/npm/dm/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input) [![Version](https://img.shields.io/npm/v/@chenfengyuan/vue-number-input/next.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input) [![Gzip Size](https://img.shields.io/bundlephobia/minzip/@chenfengyuan/vue-number-input.svg)](https://unpkg.com/@chenfengyuan/vue-number-input/dist/vue-number-input.js)
+[![Coverage Status](https://img.shields.io/codecov/c/github/fengyuanchen/vue-number-input.svg)](https://codecov.io/gh/fengyuanchen/vue-number-input) [![Downloads](https://img.shields.io/npm/dm/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input) [![Version](https://img.shields.io/npm/v/@chenfengyuan/vue-number-input.svg)](https://www.npmjs.com/package/@chenfengyuan/vue-number-input) [![Gzip Size](https://img.shields.io/bundlephobia/minzip/@chenfengyuan/vue-number-input.svg)](https://unpkg.com/@chenfengyuan/vue-number-input/dist/vue-number-input.js)
 
-> Number input component for Vue 3.
+> Number input component for Vue 3. For Vue 2, check out the [`v1`](https://github.com/fengyuanchen/vue-number-input/tree/v1) branch.
 
 - [Docs](src/README.md)
 - [Demo](https://fengyuanchen.github.io/vue-number-input)
@@ -22,15 +22,29 @@ dist/
 
 ### Installation
 
+Using npm:
+
 ```shell
-npm install vue@next @chenfengyuan/vue-number-input@next
+npm install vue@3 @chenfengyuan/vue-number-input@2
 ```
 
-In browser:
+Using pnpm:
+
+```shell
+pnpm add vue@3 @chenfengyuan/vue-number-input@2
+```
+
+Using Yarn:
+
+```shell
+yarn add vue@3 @chenfengyuan/vue-number-input@2
+```
+
+Using CDN:
 
 ```html
-<script src="/path/to/vue.js"></script><!-- Vue.js is required -->
-<script src="/path/to/vue-number-input.js"></script>
+<script src="https://unpkg.com/vue@3"></script><!-- Vue.js is required -->
+<script src="https://unpkg.com/@chenfengyuan/vue-number-input@2"></script>
 ```
 
 ### Usage
