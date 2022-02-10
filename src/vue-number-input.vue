@@ -225,7 +225,7 @@ export default defineComponent({
         }
 
         if (this.rounded) {
-          newValue = Math.round(value);
+          newValue = Math.round(newValue);
         }
       }
 
