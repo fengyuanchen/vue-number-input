@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0...v2.0.1) (2022-02-13)
+
+
+### Bug Fixes
+
+* round the normalized new value ([30aaa6a](https://github.com/fengyuanchen/vue-number-input/commit/30aaa6a4a74b99e177477fb21f8ad178d13bb8af)), closes [#32](https://github.com/fengyuanchen/vue-number-input/issues/32)
+
+
+
 # [2.0.0](https://github.com/fengyuanchen/vue-number-input/compare/v2.0.0-rc.2...v2.0.0) (2022-02-07)
 
 
