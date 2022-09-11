@@ -14,7 +14,7 @@
       type="button"
       tabindex="-1"
       :disabled="disabled || readonly || !decreasable"
-      @click="decrease"
+      @click.prevent="decrease"
     />
     <input
       ref="input"
@@ -39,7 +39,7 @@
       type="button"
       tabindex="-1"
       :disabled="disabled || readonly || !increasable"
-      @click="increase"
+      @click.prevent="increase"
     />
   </div>
 </template>
